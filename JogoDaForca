@@ -10,17 +10,38 @@ import javax.swing.JOptionPane;
 public class JogoDaForca {
 
     public static void main(String[] args) {
-
-        boolean denovo = true;
-
-        String escolha = " ";
-
         // mensagem inicial
         JOptionPane.showMessageDialog(null, "Bem vindo ao Jogo da Forca!\n_______\n|             |\n|            O\n|            /|\\\n|            / \\\n|\n3 dias de trabalho, mais de 2700 linhas de codigo e 838 palavras!");
 
+        boolean denovo = true;
+
         while (denovo) {
 
+            int min = 0;
+            int max = 0;
+            int selecTema;
+            int seletor;
+            int tent = 6;
+            int jk;
+            int qntTotalChute;
+            int reiniciar;
+
             boolean modoOk = true;
+            boolean venceu = false;
+            boolean chuteInteiro;
+            boolean letraSimples;
+            boolean acertou;
+
+            String escolha = " ";
+            String word[];
+            String tema = null;
+            String dica = null;
+            String resposta[];
+            String buneco[];
+            String chute = "";
+            String usadas = " ";
+            String mensagem;
+            String display;
 
             // selecão de tema
             while (modoOk) {
@@ -44,10 +65,8 @@ public class JogoDaForca {
                     modoOk = true;
                 }
             }
-            int min = 0;
-            int max = 0;
 
-            int selecTema = Integer.parseInt(escolha);
+            selecTema = Integer.parseInt(escolha);
 
             // aleatorio
             switch (selecTema) {
@@ -127,7 +146,6 @@ public class JogoDaForca {
             }
 
             // palavras
-            String word[];
             word = new String[838];
             // frutas, vegetais, graos, ervas, etc
             //sub-frutas
@@ -345,6 +363,7 @@ public class JogoDaForca {
             word[176] = "camarão";
             word[177] = "lagosta";
             word[178] = "siri";
+
             //sub-moluscos
             word[179] = "ostra";
             word[180] = "lula";
@@ -1222,12 +1241,9 @@ public class JogoDaForca {
             // sorteio da palavra
             Random ran = new Random();
 
-            int seletor = ran.nextInt((max - min) + 1) + min;
+            seletor = ran.nextInt((max - min) + 1) + min;
 
             // definicao da mensagem de tema
-            String tema = null;
-            String dica = null;
-
             if (seletor >= 0 && seletor <= 99) {
 
                 tema = "Frutas, vegetais, grãos, ervas, etc.";
@@ -1767,11 +1783,7 @@ public class JogoDaForca {
             }
 
             // criacao da "palavra" que é mostrada
-            String resposta[];
-
             resposta = new String[word[seletor].length()];
-
-            int qntEspaco = 0;
 
             // print das casas
             for (int pl = 0; pl < word[seletor].length(); pl++) {
@@ -1827,7 +1839,6 @@ public class JogoDaForca {
 
             }
 
-            String buneco[];
             buneco = new String[7];
             // partes do buneco inforcado
             buneco[0] = "_______\n|             |\n|            O\n|            /|\\\n|            / \\\n|";
@@ -1838,33 +1849,16 @@ public class JogoDaForca {
             buneco[5] = "_______\n|             |\n|            O\n|            \n|\n|";
             buneco[6] = "_______\n|             |\n|\n|\n|\n|";
 
-            String chute = "";
-
-            // numero de jogadas
-            int tent = 6;
-
-            boolean venceu = false;
-
-            String usadas = " ";
-
-            boolean chuteInteiro = false;
-
-            int jk = 0;
-
-            boolean letraSimples = false;
-
             // parte principal
             while (tent > 0 && !venceu) {
 
-                int qntTotalChute = 0;
+                qntTotalChute = 0;
 
                 letraSimples = false;
 
                 chuteInteiro = false;
 
-                String mensagem = " ";
-
-                String display = null;
+                mensagem = " ";
 
                 for (int y = 0; y < resposta.length; y++) {
 
@@ -1891,7 +1885,7 @@ public class JogoDaForca {
 
                 } while (chute.isEmpty());
 
-                boolean acertou = false;
+                acertou = false;
 
                 if (chute.length() == resposta.length) {
 
@@ -2693,7 +2687,7 @@ public class JogoDaForca {
                 JOptionPane.showMessageDialog(null, buneco[tent] + "\nVocê perdeu!\nA palavra correta era: " + word[seletor]);
             }
 
-            int reiniciar = JOptionPane.showConfirmDialog(null, "Você quer tentar novamente?");
+            reiniciar = JOptionPane.showConfirmDialog(null, "Você quer tentar novamente?");
 
             if (reiniciar == JOptionPane.YES_OPTION) {
 
