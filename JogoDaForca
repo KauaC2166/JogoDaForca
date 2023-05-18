@@ -1,0 +1,2717 @@
+package jogodaforca;
+//Feito por: Kauã C. Seabra
+//11/04/2023 - 13/04/2023
+//Ultima atualização: 17/05/2023
+
+import java.util.Random;
+
+import javax.swing.JOptionPane;
+
+public class JogoDaForca {
+
+    public static void main(String[] args) {
+
+        boolean denovo = true;
+
+        String escolha = " ";
+
+        // mensagem inicial
+        JOptionPane.showMessageDialog(null, "Bem vindo ao Jogo da Forca!\n_______\n|             |\n|            O\n|            /|\\\n|            / \\\n|\n3 dias de trabalho, mais de 2700 linhas de codigo e 838 palavras!");
+
+        while (denovo) {
+
+            boolean modoOk = true;
+
+            // selecão de tema
+            while (modoOk) {
+
+                escolha = JOptionPane.showInputDialog("Escolha um tema:\n0 - Aleatorio\n1 - Frutas, vegetais, grãos, ervas, etc.\n2 - Animais\n3 - Filmes\n4 - Filmes animados\n5 - Series animadas\n6 - Paises\n7 - Estados do Brasil\n8 - Planetas do Sistema Solar\n9 - Bandas de Heavy Metal\n 10 - Games\n \n838 palavras possiveis");
+
+                if (escolha.equals("0") || escolha.equals("1") || escolha.equals("2") || escolha.equals("3") || escolha.equals("4") || escolha.equals("5") || escolha.equals("6") || escolha.equals("7") || escolha.equals("8") || escolha.equals("9") || escolha.equals("10") || escolha.equals("11")) {
+
+                    modoOk = false;
+
+                } else if (escolha.isEmpty()) {
+
+                    JOptionPane.showMessageDialog(null, "Nenhuma modo foi escolhido, tente novamente");
+
+                    modoOk = true;
+
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "Erro!\nDigite um modo valido!");
+
+                    modoOk = true;
+                }
+            }
+            int min = 0;
+            int max = 0;
+
+            int selecTema = Integer.parseInt(escolha);
+
+            // aleatorio
+            switch (selecTema) {
+                case 0:
+                    min = 0;
+                    max = 838;
+
+                    // frutas vegetais etc
+                    break;
+                case 1:
+                    min = 0;
+                    max = 99;
+
+                    // animais
+                    break;
+                case 2:
+                    min = 100;
+                    max = 199;
+
+                    // filmes
+                    break;
+                case 3:
+                    min = 200;
+                    max = 299;
+
+                    // filmes animados
+                    break;
+                case 4:
+                    min = 300;
+                    max = 399;
+
+                    // series animadas
+                    break;
+                case 5:
+                    min = 640;
+                    max = 739;
+
+                    // paises
+                    break;
+                case 6:
+                    min = 400;
+                    max = 499;
+
+                    // estados do brasil
+                    break;
+                case 7:
+                    min = 600;
+                    max = 626;
+
+                    // planetas
+                    break;
+                case 8:
+                    min = 627;
+                    max = 634;
+
+                    // bandas
+                    break;
+                case 9:
+                    min = 500;
+                    max = 599;
+
+                    //games
+                    break;
+                case 10:
+                    min = 740;
+                    max = 837;
+
+                    //extras
+                    break;
+                case 11:
+                    min = 635;
+                    max = 639;
+
+                    break;
+                default:
+                    break;
+            }
+
+            // palavras
+            String word[];
+            word = new String[838];
+            // frutas, vegetais, graos, ervas, etc
+            //sub-frutas
+            word[0] = "morango";
+            word[1] = "abacaxi";
+            word[2] = "laranja";
+            word[3] = "bergamota";
+            word[4] = "limão";
+            word[5] = "acerola";
+            word[6] = "banana";
+            word[7] = "manga";
+            word[8] = "mamão";
+            word[9] = "melancia";
+            word[10] = "jabuticaba";
+            word[11] = "pera";
+            word[12] = "uva";
+            word[13] = "toranja";
+            word[14] = "ameixa";
+            word[15] = "pêssego";
+            word[16] = "nectarina";
+            word[17] = "cereja";
+            word[18] = "amora";
+            word[19] = "melão";
+            word[20] = "goiaba";
+            word[21] = "kiwi";
+            word[22] = "caqui";
+            word[23] = "coco";
+            word[24] = "jaca";
+            word[25] = "guaraná";
+            word[26] = "açaí";
+            word[27] = "tamarindo";
+            word[28] = "maracujá";
+            word[29] = "cajá";
+            word[30] = "romã";
+            word[31] = "butiá";
+            word[32] = "figo";
+            word[33] = "fruta-do-conde";
+            word[34] = "cambuci";
+            word[35] = "pitaya";
+            word[36] = "tomate";
+            word[37] = "abacate";
+            word[38] = "carambola";
+            word[39] = "tâmara";
+            word[40] = "mirtilo";
+            word[41] = "damasco";
+            word[42] = "pitanga";
+            word[43] = "maçã";
+            word[44] = "lima";
+            word[45] = "graviola";
+
+            //sub-vegetais
+            word[46] = "abóbora";
+            word[47] = "cenoura";
+            word[48] = "cebola";
+            word[49] = "abobrinha";
+            word[50] = "chuchu";
+            word[51] = "alho";
+            word[52] = "pepino";
+            word[53] = "pimenta";
+            word[54] = "pimentão";
+            word[55] = "alface";
+            word[56] = "azeitona";
+            word[57] = "batata";
+            word[58] = "aipim";
+            word[59] = "batata-doce";
+            word[60] = "repolho";
+            word[61] = "quiabo";
+            word[62] = "rabanete";
+            word[63] = "beterraba";
+            word[64] = "berinjela";
+            word[65] = "brócolis";
+            word[66] = "couve-flor";
+
+            //sub-ervas
+            word[67] = "espinafre";
+            word[68] = "salsa";
+            word[69] = "vagem";
+            word[70] = "rúcula";
+            word[71] = "aspargo";
+            word[72] = "couve";
+            word[73] = "alcachofa";
+            word[74] = "mostarda";
+            word[75] = "alecrim";
+            word[76] = "hortelã";
+            word[77] = "açafrão";
+            word[78] = "erva-mate";
+            word[79] = "canela";
+            word[80] = "cravo";
+            word[81] = "erva-doce";
+            word[82] = "anis";
+            word[83] = "cidreira";
+            word[84] = "hibisco";
+            word[85] = "loro";
+
+            //sub-nozes e sementes
+            word[86] = "pinhão";
+            word[87] = "castanha";
+            word[88] = "amendoim";
+            word[89] = "pistache";
+            word[90] = "noz-moscada";
+            word[91] = "amêndoa";
+            word[92] = "café";
+
+            //sub-grãos e cereais
+            word[93] = "arroz";
+            word[94] = "feijão";
+            word[95] = "trigo";
+            word[96] = "soja";
+            word[97] = "milho";
+            word[98] = "cevada";
+
+            //sub-fungo
+            word[99] = "champignon";
+
+            // animais
+            //sub-aves
+            word[100] = "avestruz";
+            word[101] = "águia";
+            word[102] = "abutre";
+            word[103] = "arara";
+            word[104] = "gaivota";
+            word[105] = "pinguim";
+            word[106] = "galinha";
+            word[107] = "bem-te-vi";
+            word[108] = "beija-flor";
+            word[109] = "garça";
+            word[110] = "cisne";
+            word[111] = "peru";
+            word[112] = "quero-quero";
+            word[113] = "pica-pau";
+
+            //sub-camelídeos
+            word[114] = "camelo";
+            word[115] = "lhama";
+
+            //sub-bovinos
+            word[116] = "touro";
+            word[117] = "búfalo";
+            word[118] = "vaca";
+
+            //sub-cobras
+            word[119] = "jiboia";
+            word[120] = "anaconda";
+            word[121] = "cobra coral";
+            word[122] = "naja";
+
+            //sub-felinos
+            word[123] = "tigre";
+            word[124] = "leão";
+            word[125] = "leopardo";
+            word[126] = "pantera";
+            word[127] = "puma";
+            word[128] = "guepardo";
+            word[129] = "chita";
+            word[130] = "tigre siberiano";
+            word[131] = "tigre de bengala";
+
+            //sub-repteis
+            word[132] = "jacaré";
+            word[133] = "calango";
+            word[134] = "crocodilo";
+            word[135] = "camaleão";
+            word[136] = "tartaruga";
+            word[137] = "jabuti";
+            word[138] = "cágado";
+            word[139] = "gavial";
+            word[140] = "crocodilo do nilo";
+
+            //sub-roedores
+            word[141] = "rato";
+            word[142] = "esquilo";
+            word[143] = "castor";
+            word[144] = "marmota";
+            word[145] = "ratazana";
+            word[146] = "capivara";
+
+            //sub-ursos
+            word[147] = "urso pardo";
+            word[148] = "panda";
+
+            //sub-primatas
+            word[149] = "macaco";
+            word[150] = "orangotango";
+            word[151] = "gorila";
+            word[152] = "chimpanzé";
+            word[153] = "babuíno";
+            word[154] = "mico-leão-dourado";
+            word[155] = "sagui";
+            word[156] = "lemuri";
+
+            //sub-peixes
+            word[157] = "tubarão";
+            word[158] = "bacalhau";
+            word[159] = "baiacu";
+            word[160] = "arraia";
+            word[161] = "tubarão cabeça de martelo";
+            word[162] = "tubarão tigre";
+            word[163] = "tubarão baleia";
+            word[164] = "tubarão cabeça chata";
+            word[165] = "tubarão branco";
+            word[166] = "peixe-palhaço";
+
+            //sub-mamiferos aquaticos
+            word[167] = "baleia";
+            word[168] = "orca";
+            word[169] = "golfinho";
+            word[170] = "foca";
+            word[171] = "peixe boi";
+            word[172] = "baleia azul";
+            word[173] = "cachalote";
+            word[174] = "baleia jubarte";
+
+            //sub-crustacios
+            word[175] = "caranguejo";
+            word[176] = "camarão";
+            word[177] = "lagosta";
+            word[178] = "siri";
+            //sub-moluscos
+            word[179] = "ostra";
+            word[180] = "lula";
+            word[181] = "polvo";
+
+            //sub-anfibios
+            word[182] = "axolote";
+            word[183] = "sapo";
+            word[184] = "rã";
+            //sub-cervos
+            word[185] = "veado";
+            word[186] = "rena";
+            //sub-equinos
+            word[187] = "burro";
+            word[188] = "mula";
+            word[189] = "zebra";
+            word[190] = "cavalo";
+
+            //sub-canideos
+            word[191] = "lobo cinzento";
+            word[192] = "lobo";
+            word[193] = "chacal";
+            word[194] = "cachorro do mato";
+            word[195] = "raposa";
+
+            //sub-grandes mamiferos
+            word[196] = "hipopótamo";
+            word[197] = "elefante";
+            word[198] = "girafa";
+            word[199] = "rinoceronte";
+
+            // filmes
+            // sub-fantasia
+            word[200] = "Star Wars";
+            word[201] = "Harry Potter";
+            word[202] = "O Senhor dos Anéis";
+            word[203] = "Jumanji";
+            word[204] = "O Grinch";
+
+            // sub-mafia
+            word[205] = "O Poderoso Chefão";
+            word[206] = "Os Infiltrados";
+            word[207] = "O Irlandês";
+
+            // sub-herois
+            word[208] = "Thor";
+            word[209] = "Homem de Ferro";
+            word[210] = "Vingadores";
+            word[211] = "Batman";
+            word[212] = "Homem-Aranha";
+            word[213] = "Corpo Fechado";
+            word[214] = "Pantera Negra";
+            word[215] = "Vidro";
+            word[216] = "Fragmentado";
+            word[217] = "Superman";
+            word[218] = "X-Men";
+
+            // sub-ação
+            word[219] = "Kill Bill";
+            word[220] = "V de Vingança";
+            word[221] = "Velozes e Furiosos";
+            word[222] = "Indiana Jones";
+            word[223] = "Jogos Vorazes";
+            word[224] = "Top Gun";
+            word[225] = "Gladiador";
+            word[226] = "Duro de Matar";
+            word[227] = "Karate Kid";
+            word[228] = "Rambo";
+            word[229] = "Missão Impossível";
+            word[230] = "John Wick";
+            word[231] = "Os Mercenários";
+            word[232] = "Godzilla";
+            word[233] = "King Kong";
+
+            //sub- drama
+            word[234] = "Taxi Driver";
+            word[235] = "Titanic";
+            word[236] = "A Laranja Mecânica";
+            word[237] = "Central do Brasil";
+            word[238] = "Tropa de Elite";
+            word[239] = "Cidade de Deus";
+            word[240] = "Forrest Gump";
+            word[241] = "Coração Valente";
+            word[242] = "Carandiru";
+            word[243] = "Whiplash";
+            word[244] = "Gangues de Nova York";
+            word[245] = "Rocky";
+            word[246] = "À Procura da Felicidade";
+
+            //sub- terror
+            word[247] = "Psicose";
+            word[248] = "Halloween";
+            word[249] = "Frankenstein";
+            word[250] = "Dracula";
+            word[251] = "O Homem Invisível";
+            word[252] = "O Silêncio dos Inocentes";
+            word[253] = "Jogos Mortais";
+            word[254] = "Nosferatu";
+            word[255] = "IT";
+            word[256] = "O Menu";
+            word[257] = "Corra!";
+            word[258] = "Psicopata Americano";
+            word[259] = "O Exorcista";
+
+            //sub- ficção cientifica
+            word[260] = "Avatar";
+            word[261] = "O Planeta dos Macacos";
+            word[262] = "O Homem Bicentenário";
+            word[263] = "Robocop";
+            word[264] = "O Exterminador do Futuro";
+            word[265] = "Blade Runner";
+            word[266] = "Maze Runner";
+            word[267] = "Tudo em Todo Lugar ao Mesmo Tempo";
+            word[268] = "Metropolis";
+            word[269] = "E.T.";
+            word[270] = "Jurassic Park";
+            word[271] = "Duna";
+            word[272] = "Perdido em Marte";
+            word[273] = "Interestelar";
+            word[274] = "Homens de Preto";
+            word[275] = "Eu Sou a Lenda";
+            word[276] = "Transformers";
+
+            //sub- faroeste
+            word[277] = "Django Livre";
+
+            //sub- guerra
+            word[278] = "Bastardos Inglórios";
+            word[279] = "O Resgate do Soldado Ryan";
+            word[280] = "Nada de Novo no Front";
+            word[281] = "A Lista de Schindler";
+
+            //sub- comedia
+            word[282] = "O Urso do Po Branco";
+            word[283] = "O Todo Poderoso";
+            word[284] = "Ace Ventura";
+            word[285] = "O Máskara";
+            word[286] = "Tempos Modernos";
+            word[287] = "Se Beber Não Case";
+            word[288] = "Top Secret";
+            word[289] = "Aperte o Cinto o Piloto Sumiu";
+            word[290] = "O Diabo Veste Prada";
+            word[291] = "Caça-Fantasmas";
+            word[292] = "Click";
+
+            //sub- crimes
+            word[293] = "Cães de Aluguel";
+            word[294] = "Pulp Fiction";
+            word[295] = "Lobo de Wall Street";
+
+            //sub- suspence
+            word[296] = "Clube da Luta";
+            word[297] = "O Código da Vinci";
+            word[298] = "Tubarão";
+            word[299] = "Prenda-me se For Capaz";
+
+            // filmes animados
+            //sub-dreamworks
+            word[300] = "Shrek";
+            word[301] = "Bee Movie";
+            word[302] = "Megamente";
+            word[303] = "Madagascar";
+            word[304] = "Os Croods";
+            word[305] = "Gato de Botas";
+            word[306] = "Trolls";
+            word[307] = "O Poderoso Chefinho";
+            word[308] = "Kung Fu Panda";
+            word[309] = "Monstros vs Aliens";
+            word[310] = "Wallace e Gromit";
+            word[311] = "Por Água Abaixo";
+            word[312] = "O Caminho para El Dorado";
+            word[313] = "A Fuga das Galinhas";
+            word[314] = "As Aventuras do Capitão Cueca";
+
+            //sub-disney
+            word[315] = "Pinóquio";
+            word[316] = "Frozen";
+            word[317] = "Fantasia";
+            word[318] = "Tarzan";
+            word[319] = "O Rei Leão";
+            word[320] = "A Pequena Sereia";
+            word[321] = "Mulan";
+            word[322] = "A Princesa e o Sapo";
+            word[323] = "Pocahontas";
+            word[324] = "Mogli";
+            word[325] = "Encanto";
+            word[326] = "Detona Ralph";
+            word[327] = "A Nova Onda do Imperador";
+            word[328] = "Branca de Neve";
+            word[329] = "Moana";
+            word[330] = "A Dama e o Vagabundo";
+            word[331] = "Hércules";
+            word[332] = "A Bela Adormecida";
+            word[333] = "Aladdin";
+            word[334] = "Lilo e Stitch";
+            word[335] = "O Galinho Chicken Little";
+            word[336] = "Zootopia";
+            word[337] = "Cinderela";
+            word[338] = "Alice no País das Maravilhas";
+            word[339] = "Bambi";
+            word[340] = "Dumbo";
+            word[341] = "Peter Pan";
+            word[342] = "Alô Amigos";
+            word[343] = "Você Já Foi à Bahia";
+            word[344] = "A Bela e a Fera";
+            word[345] = "O Estranho Mundo de Jack";
+            word[346] = "Operação Big Hero";
+            word[347] = "Rio";
+            word[348] = "Robin Hood";
+            word[349] = "O Corcunda de Notre Dame";
+            word[350] = "Raya e o Último Dragão";
+            word[351] = "Irmão Urso";
+            word[352] = "Bernardo e Bianca";
+            word[353] = "Enrolados";
+            word[354] = "O Ursinho Pooh";
+            word[355] = "Frankenweenie";
+
+            //sub-pixar
+            word[356] = "Procurando Nemo";
+            word[357] = "Wall-E";
+            word[358] = "Ratatouille";
+            word[359] = "Toy Story";
+            word[360] = "Soul";
+            word[361] = "Carros";
+            word[362] = "Valente";
+            word[363] = "Up";
+            word[364] = "Divertida Mente";
+            word[365] = "Vida de Inseto";
+            word[366] = "Os Incríveis";
+            word[367] = "Monstros S.A.";
+            word[368] = "Elementos";
+            word[369] = "Aviões";
+
+            //sub-20th Century Animation
+            word[370] = "Horton";
+            word[371] = "O Fantástico Sr. Raposo";
+            word[372] = "A Era do Gelo";
+            word[373] = "O Touro Ferdinando";
+
+            //sub-nickelodeon
+            word[374] = "Rango";
+
+            //sub-paramount
+            word[375] = "Os Sem-Floresta";
+            word[376] = "Como Treinar o Seu Dragão";
+
+            //sub-universal
+            word[377] = "O Lorax";
+            word[378] = "Shaun o Carneiro";
+
+            //sub-columbia pictures/sony
+            word[379] = "Tá Chovendo Hambúrguer";
+            word[380] = "A Casa Monstro";
+            word[381] = "Hotel Transilvânia";
+            word[382] = "Emoji";
+            word[383] = "Festa da Salsicha";
+            word[384] = "O Bicho Vai Pegar";
+            word[385] = "Angry Birds";
+            word[386] = "Os Smurfs";
+            word[387] = "Tá Dando Onda";
+            word[388] = "Homem-Aranha no Aranha-Verso";
+
+            //sub-focus features
+            word[389] = "Coraline";
+
+            //sub-illumination
+            word[390] = "Meu Malvado Favorito";
+            word[391] = "Os Minions";
+            word[392] = "Sing";
+            word[393] = "Pets";
+
+            //sub-warner bros.
+            word[394] = "Uma Aventura Lego";
+            word[395] = "O Gigante de Ferro";
+            word[396] = "A Noiva Cadáver";
+            word[397] = "Happy Feet";
+            word[398] = "Pé Pequeno";
+
+            //sub-netflix
+            word[399] = "Klaus";
+
+            // paises
+            //sub-america do sul
+            word[400] = "Brasil";
+            word[401] = "Uruguai";
+            word[402] = "Argentina";
+            word[403] = "Bolívia";
+            word[404] = "Guiana Francesa";
+            word[405] = "Peru";
+            word[406] = "Chile";
+            word[407] = "Venezuela";
+
+            //sub-america do norte
+            word[408] = "Estados Unidos";
+            word[409] = "Canadá";
+            word[410] = "México";
+            word[411] = "Groenlândia";
+
+            //sub-europa
+            word[412] = "França";
+            word[413] = "Ucrânia";
+            word[414] = "Alemanha";
+            word[415] = "Espanha";
+            word[416] = "Croácia";
+            word[417] = "Grécia";
+            word[418] = "Áustria";
+            word[419] = "Macedônia";
+            word[420] = "Romênia";
+            word[421] = "Portugal";
+            word[422] = "Andorra";
+            word[423] = "Mônaco";
+            word[424] = "Vaticano";
+            word[425] = "Itália";
+            word[426] = "Lituânia";
+            word[427] = "Dinamarca";
+            word[428] = "Finlândia";
+            word[429] = "Escócia";
+            word[430] = "Noruega";
+            word[431] = "Islândia";
+            word[432] = "País de Gales";
+            word[433] = "Irlanda";
+            word[434] = "Irlanda do Norte";
+            word[435] = "Holanda";
+            word[436] = "Bélgica";
+            word[437] = "Luxemburgo";
+            word[438] = "Suíça";
+            word[439] = "Tchéquia";
+            word[440] = "Polônia";
+            word[441] = "Hungria";
+            word[442] = "Moldávia";
+            word[443] = "Liechtenstein";
+
+            //sub-asia
+            word[444] = "Turcomenistão";
+            word[445] = "Índia";
+            word[446] = "China";
+            word[447] = "Japão";
+            word[448] = "Armênia";
+            word[449] = "Mongólia";
+            word[450] = "Cazaquistão";
+            word[451] = "Bangladesh";
+            word[452] = "Azerbaijão";
+            word[453] = "Nepal";
+            word[454] = "Taiwan";
+            word[455] = "Coreia do Sul";
+            word[456] = "Coreia do Norte";
+            word[457] = "Vietnã";
+            word[458] = "Myanmar";
+            word[459] = "Filipinas";
+            word[460] = "Afeganistão";
+
+            //sub-oriente medio
+            word[461] = "Turquia";
+            word[462] = "Emirados Árabes";
+            word[463] = "Arábia Saudita";
+            word[464] = "Qatar";
+            word[465] = "Israel";
+            word[466] = "Iraque";
+            word[467] = "Síria";
+
+            //sub-eurasia
+            word[468] = "Rússia";
+
+            //sub-africa
+            word[469] = "África do Sul";
+            word[470] = "Egito";
+            word[471] = "Botsuana";
+            word[472] = "Marrocos";
+            word[473] = "Tunísia";
+            word[474] = "Etiópia";
+            word[475] = "Quênia";
+            word[476] = "Zimbábue";
+            word[477] = "Namíbia";
+            word[478] = "Lesoto";
+            word[479] = "Moçambique";
+            word[480] = "Congo";
+            word[481] = "República Democrática do Congo";
+            word[482] = "Gabão";
+            word[483] = "Nigéria";
+            word[484] = "Camarões";
+            word[485] = "Chade";
+            word[486] = "Burquina Fasso";
+            word[487] = "Madagascar";
+            word[488] = "Sudão";
+            word[489] = "Sudão do Sul";
+
+            //sub-america central
+            word[490] = "Cuba";
+            word[491] = "Jamaica";
+            word[492] = "Costa Rica";
+            word[493] = "Panamá";
+            word[494] = "Guatemala";
+            word[495] = "Nicarágua";
+
+            //sub-oceania
+            word[496] = "Micronésia";
+            word[497] = "Austrália";
+            word[498] = "Papua-Nova Guiné";
+            word[499] = "Tonga";
+
+            // bandas de heavy metal
+            //sub-thrash metal
+            word[500] = "Metallica";
+            word[501] = "Megadeth";
+            word[502] = "Sepultura";
+            word[503] = "Testament";
+            word[504] = "Exodus";
+            word[505] = "Venom";
+            word[506] = "Slayer";
+            word[507] = "Anthrax";
+            word[508] = "Kreator";
+            word[509] = "Overkill";
+            word[510] = "Annihilator";
+            word[511] = "Sodom";
+            word[512] = "Sylosis";
+
+            //sub-industrial metal
+            word[513] = "Rammstein";
+            word[514] = "Fear Factory";
+
+            //sub-alternative metal
+            word[515] = "System of a Down";
+            word[516] = "Slipknot";
+            word[517] = "Korn";
+            word[518] = "Disturbed";
+            word[519] = "Five Finger Death Punch";
+            word[520] = "Limp Bizkit";
+            word[521] = "In Flames";
+            word[522] = "Suicidal Tendencies";
+            word[523] = "Mudvayne";
+
+            //sub-death metal
+            word[524] = "Gojira";
+            word[525] = "Death";
+            word[526] = "Children of Bodom";
+            word[527] = "Behemoth";
+            word[528] = "Amon Amarth";
+            word[529] = "Arch Enemy";
+            word[530] = "Morbid Angel";
+            word[531] = "Napalm Death";
+            word[532] = "Necrophagist";
+            word[533] = "Wintersun";
+            word[534] = "At the Gates";
+
+            //sub-classic metal
+            word[535] = "Iron Maiden";
+            word[536] = "Judas Priest";
+            word[537] = "Motörhead";
+            word[538] = "Diamond Head";
+            word[539] = "Ozzy Osbourne";
+            word[540] = "Dio";
+            word[541] = "Mercyful Fate";
+            word[542] = "Rainbow";
+            word[543] = "Ghost";
+            word[544] = "Saxon";
+
+            //sub-doom metal
+            word[545] = "Black Sabbath";
+            word[546] = "Candlemass";
+
+            //sub-power metal
+            word[547] = "Angra";
+            word[548] = "Dragonforce";
+            word[549] = "Helloween";
+            word[550] = "Manowar";
+            word[551] = "Sabaton";
+            word[552] = "Dream Evil";
+            word[553] = "Stratovarius";
+            word[554] = "Blind Guardian";
+            word[555] = "Rhapsody";
+
+            //sub-black metal
+            word[556] = "Mayhem";
+            word[557] = "Bathory";
+            word[558] = "Burzum";
+            word[559] = "Cradle of Filth";
+            word[560] = "Emperor";
+            word[561] = "Satyricon";
+            word[562] = "Darkthrone";
+            word[563] = "Immortal";
+            word[564] = "Dissection";
+            word[565] = "Gorgoroth";
+            word[566] = "Enslaved";
+            word[567] = "Ulver";
+            word[568] = "Dimmu Borgir";
+            word[569] = "Windir";
+            word[570] = "Xasthur";
+            word[571] = "Nargaroth";
+            word[572] = "Absu";
+            word[573] = "Beherit";
+            word[574] = "Leviathan";
+
+            //sub-brutal metal
+            word[575] = "Cannibal Corpse";
+
+            //sub-prog metal
+            word[576] = "Dream Theater";
+            word[577] = "Symphony X";
+            word[578] = "Tool";
+            word[579] = "Avenged Sevenfold";
+            word[580] = "Mastodon";
+            word[581] = "Queensrÿche";
+            word[582] = "Opeth";
+            word[583] = "Periphery";
+            word[584] = "Polyphia";
+            word[585] = "Spiritbox";
+
+            //sub-groove metal
+            word[586] = "Pantera";
+            word[587] = "Lamb of God";
+            word[588] = "Machine Head";
+
+            //sub-gothic metal
+            word[589] = "Type O Negative";
+
+            //sub-metalcore
+            word[590] = "Killswitch Engage";
+            word[591] = "Trivium";
+            word[592] = "Ice Nine Kills";
+            word[593] = "Architects";
+
+            //sub-symphonic metal
+            word[594] = "Nightwish";
+
+            //sub-sludge metal
+            word[595] = "Corrosion of Conformity";
+
+            //sub-djent
+            word[596] = "Meshuggah";
+
+            //sub-glam metal
+            word[597] = "Extreme";
+
+            //sub-deathcore
+            word[598] = "Lorna Shore";
+            word[599] = "Slaughter to Prevail";
+
+            // estados do brasil
+            //sub-sul
+            word[600] = "Rio Grande do Sul";
+            word[601] = "Santa Catarina";
+            word[602] = "Paraná";
+
+            //sub-sudeste
+            word[603] = "São Paulo";
+            word[604] = "Rio de Janeiro";
+            word[605] = "Espírito Santo";
+            word[606] = "Minas Gerais";
+
+            //sub-nordeste
+            word[607] = "Bahia";
+            word[608] = "Paraíba";
+            word[609] = "Pernambuco";
+            word[610] = "Alagoas";
+            word[611] = "Ceará";
+            word[612] = "Rio Grande do Norte";
+            word[613] = "Maranhão";
+            word[614] = "Piauí";
+            word[615] = "Sergipe";
+
+            //sub-norte
+            word[616] = "Pará";
+            word[617] = "Amapá";
+            word[618] = "Amazonas";
+            word[619] = "Roraima";
+            word[620] = "Rondônia";
+            word[621] = "Acre";
+            word[622] = "Tocantins";
+
+            //sub-centro-oeste
+            word[623] = "Mato Grosso";
+            word[624] = "Mato Grosso do Sul";
+            word[625] = "Goiás";
+            word[626] = "Distrito Federal";
+
+            // Planetas do sistema solar
+            //sub-rochosos
+            word[627] = "Terra";
+            word[628] = "Marte";
+            word[629] = "Vênus";
+            word[630] = "Mercúrio";
+
+            //sub-gasosos
+            word[631] = "Júpiter";
+            word[632] = "Saturno";
+            word[633] = "Urano";
+            word[634] = "Netuno";
+
+            // extra
+            //sub-programador do jogo
+            word[635] = "Kauã";
+
+            //sub-escola
+            word[636] = "IFsul";
+
+            //sub-professores
+            word[637] = "Timóteo";
+            word[638] = "Ruhan";
+            word[639] = "Vinícius";
+
+            //series animadas
+            //cartoon network
+            word[640] = "Hora de Aventura";
+            word[641] = "Apenas um Show";
+            word[642] = "O Incrível Mundo de Gumball";
+            word[643] = "Steven Universo";
+            word[644] = "As Meninas Superpoderosas";
+            word[645] = "Samurai Jack";
+            word[646] = "As Terríveis Aventuras De Billy e Mandy";
+            word[647] = "O Laboratório de Dexter";
+            word[648] = "Ben 10";
+            word[649] = "A Vaca e o Frango";
+            word[650] = "A Turma do Bairro";
+            word[651] = "A Mansão Foster para Amigos Imaginários";
+            word[652] = "Johnny Bravo";
+            word[653] = "Titio Avô";
+            word[654] = "Du, Dudu e Edu";
+            word[655] = "Coragem o Cão Covarde";
+            word[656] = "Clarencio";
+            word[657] = "OK K.O.!";
+            word[658] = "Acampamento de Lazlo";
+            word[659] = "Eu Sou Um Máximo!";
+            word[660] = "Pink e o Cérebro";
+            word[661] = "Drama Total";
+            word[662] = "Ursos Sem Curso";
+            word[663] = "Maçã e Cebola";
+            word[664] = "O Mundo de Greg";
+            word[665] = "Irmão do Jorel";
+            word[666] = "Johnny Test";
+            word[667] = "Chowder";
+            word[668] = "Ninjago";
+            word[669] = "Oswaldo";
+            word[670] = "A Vida e Aventuras de Juniper Lee";
+            word[671] = "Três Espiãs Demais";
+            word[672] = "Turma da Mônica";
+            word[673] = "Mutante Rex";
+            word[674] = "Titã Simbiônico";
+            word[675] = "As Aventuras de Jackie Chan";
+
+            //nickelodeon
+            word[676] = "Bob Esponja";
+            word[677] = "Os Padrinhos Mágicos";
+            word[678] = "Jimmy Neutron";
+            word[679] = "Ren e Stimpy";
+            word[680] = "Hey Arnold!";
+            word[681] = "Os Rugrats";
+            word[682] = "Sanjay & Craig";
+            word[683] = "A Vida Moderna de Rocko";
+            word[684] = "Tartarugas Ninja";
+            word[685] = "The Loud House";
+            word[686] = "Dora a Aventureira";
+            word[687] = "Thomas e Seus Amigos";
+
+            //adult swim
+            word[688] = "Rick e Morty";
+            word[689] = "Aqua Teen";
+            word[690] = "Bob's Burgers";
+
+            //netflix
+            word[691] = "BoJack Horseman";
+            word[692] = "The Midnight Gospel";
+            word[693] = "(Des)encanto";
+            word[694] = "Final Space";
+            word[695] = "Arcane";
+            word[696] = "Love, Death & Robots";
+            word[697] = "Big Mouth";
+
+            //fox
+            word[698] = "Os Simpsons";
+            word[699] = "Family Guy";
+            word[700] = "Futurama";
+            word[701] = "American Dad!";
+
+            //disney
+            word[702] = "Gravity Falls";
+            word[703] = "Phineas e Ferb";
+            word[704] = "Star vs. as Forças do Mal";
+            word[705] = "Amphibia";
+            word[706] = "A Casa da Coruja";
+            word[707] = "Adolepeixes";
+            word[708] = "What If...?";
+            word[709] = "Kick Buttowski";
+            word[710] = "Kid vs. Kat";
+            word[711] = "DuckTales";
+
+            //warner bros
+            word[712] = "Looney Tunes";
+            word[713] = "Os Jovens Titãs";
+            word[714] = "Animaniacs";
+            word[715] = "Taz-mania";
+            word[716] = "Freakazoid!";
+            word[717] = "Super Choque";
+
+            //universal
+            word[718] = "Pica-Pau";
+            word[719] = "He-Man";
+
+            //Rankin/Bass Animated Entertainment
+            word[720] = "Thundercats";
+
+            //marvel productions
+            word[721] = "Caverna do Dragão";
+
+            //hanna-barbera
+            word[722] = "Scooby-Doo";
+            word[723] = "Os Flintstones";
+            word[724] = "Os Jetsons";
+            word[725] = "Zé Colmeia";
+            word[726] = "Manda-Chuva";
+            word[727] = "Corrida Maluca";
+            word[728] = "Homem-Pássaro";
+            word[729] = "Galaxy-trio";
+            word[730] = "A Família Addams";
+            word[731] = "Os Smurfs";
+            word[732] = "Cavalo de Fogo";
+
+            //paramount
+            word[733] = "South Park";
+            word[734] = "Popeye";
+
+            //mgm
+            word[735] = "Tom e Jerry";
+            word[736] = "A Pantera Cor-de-Rosa";
+
+            //discovery kids
+            word[737] = "Peppa Pig";
+            word[738] = "George, o Curioso";
+            word[739] = "My Little Pony";
+
+            //games
+            //sandbox
+            word[740] = "Minecraft";
+            word[741] = "Roblox";
+
+            //mundo aberto
+            word[742] = "Grand Theft Auto";
+
+            //fps
+            word[743] = "Call Of Duty";
+            word[744] = "Rainbow Six";
+            word[745] = "Doom";
+            word[746] = "Wolfenstein";
+            word[747] = "Halo";
+            word[748] = "Far Cry";
+            word[749] = "Battlefield";
+            word[750] = "Overwatch";
+            word[751] = "Borderlands";
+            word[752] = "Counter-Strike";
+            word[753] = "Ghost Recon";
+            word[754] = "Half-Life";
+            word[755] = "Portal";
+
+            //rpg
+            word[756] = "Assassin's Creed";
+            word[757] = "The Witcher";
+            word[758] = "Fallout";
+            word[759] = "Dark Souls";
+            word[760] = "Terraria";
+            word[761] = "Pokémon";
+            word[762] = "The Elder Scrolls";
+            word[763] = "Final Fantasy";
+            word[764] = "Diablo";
+            word[765] = "Mass Effect";
+            word[766] = "Yakuza";
+            word[767] = "Kingdom's Hearts";
+            word[768] = "Persona";
+            word[769] = "Bloodborne";
+            word[770] = "Undertale";
+            word[771] = "Genshin Impact";
+            word[772] = "Demon's Souls";
+
+            //battle royale
+            word[773] = "Fortnite";
+            word[774] = "PlayerUnknown's Battlegrounds";
+            word[775] = "Free Fire";
+
+            //esporte
+            word[776] = "FIFA";
+            word[777] = "Rocket League";
+            word[778] = "Tony Hawk's Pro Skater";
+            word[779] = "Pro Evolution Soccer";
+            word[780] = "Wii Sports";
+
+            //multiplayer online battle arena (MOBA)
+            word[781] = "League Of Legends";
+            word[782] = "Dota";
+            word[783] = "Brawl Stars";
+
+            //MMORPG
+            word[784] = "World Of Warcraft";
+
+            //luta
+            word[785] = "Mortal Kombat";
+            word[786] = "Street Fighter";
+            word[787] = "Smash Bros.";
+            word[788] = "Soulcalibur";
+
+            //arcade
+            word[789] = "Pac-Man";
+            word[790] = "Tetris";
+            word[791] = "Donkey Kong";
+            word[792] = "Asteroids";
+            word[793] = "Space Invaders";
+
+            //plataforma
+            word[794] = "Mario Bros.";
+            word[795] = "Sonic";
+            word[796] = "Castlevania";
+            word[797] = "Crash Bandicoot";
+            word[798] = "Metroid";
+            word[799] = "Cuphead";
+            word[800] = "Rayman";
+            word[801] = "Little Nightmares";
+            word[802] = "Metal Slug";
+
+            //musica
+            word[803] = "Guitar Hero";
+
+            //survivor
+            word[804] = "Among Us";
+            word[805] = "Dead By Daylight";
+            word[806] = "The Last Of Us";
+            word[807] = "ARK";
+            word[808] = "Bandy and the Ink";
+
+            //simulator
+            word[809] = "The Sims";
+            word[810] = "Overcooked!";
+            word[811] = "Goat Simulator";
+            word[812] = "Euro Truck Simulator";
+            word[813] = "Microsoft Flight Simulator";
+
+            //corrida
+            word[814] = "Forza";
+            word[815] = "Need for Speed";
+
+            //real time strategy
+            word[816] = "Age of Empires";
+            word[817] = "Clash Royale";
+
+            //aventura
+            word[818] = "No Man's Sky";
+            word[819] = "The Legend Of Zelda";
+            word[820] = "Uncharted";
+
+            //stealth
+            word[821] = "Hitman";
+            word[822] = "Hello Neighbor";
+            word[823] = "Metal Gear Solid";
+            word[824] = "Splinter Cell";
+
+            //ação
+            word[825] = "Death Stranding";
+            word[826] = "God Of War";
+            word[827] = "Red Dead Redemption";
+            word[828] = "Tomb Raider";
+            word[829] = "Devil May Cry";
+            word[830] = "Detroit";
+
+            //shutter
+            word[831] = "Gears of War";
+
+            //terror
+            word[832] = "Resident Evil";
+            word[833] = "Silent Hill";
+
+            //dança
+            word[834] = "Dance Dance Revolution";
+            word[835] = "Just Dance";
+
+            //shoot 'em up
+            word[836] = "Enter the Gungeon";
+            word[837] = "Hotline Miami";
+
+            // sorteio da palavra
+            Random ran = new Random();
+
+            int seletor = ran.nextInt((max - min) + 1) + min;
+
+            // definicao da mensagem de tema
+            String tema = null;
+            String dica = null;
+
+            if (seletor >= 0 && seletor <= 99) {
+
+                tema = "Frutas, vegetais, grãos, ervas, etc.";
+
+                if (seletor >= 0 && seletor <= 45) {
+
+                    dica = "É uma fruta";
+
+                } else if (seletor >= 46 && seletor <= 66) {
+
+                    dica = "É um vegetal";
+
+                } else if (seletor >= 67 && seletor <= 85) {
+
+                    dica = "É uma erva";
+
+                } else if (seletor >= 86 && seletor <= 92) {
+
+                    dica = "É uma noz ou cemente";
+
+                } else if (seletor >= 93 && seletor <= 98) {
+
+                    dica = "É um grão ou cereal";
+
+                } else if (seletor == 99) {
+
+                    dica = "É um Fungo";
+
+                }
+
+            } else if (seletor >= 100 && seletor <= 199) {
+
+                tema = "Animais";
+
+                if (seletor >= 100 && seletor <= 113) {
+
+                    dica = "É uma ave";
+
+                } else if (seletor >= 114 && seletor <= 115) {
+
+                    dica = "É um camelídeo";
+
+                } else if (seletor >= 116 && seletor <= 118) {
+
+                    dica = "É um bovino";
+
+                } else if (seletor >= 119 && seletor <= 122) {
+
+                    dica = "É uma cobra";
+
+                } else if (seletor >= 123 && seletor <= 131) {
+
+                    dica = "É um felino";
+
+                } else if (seletor >= 132 && seletor <= 140) {
+
+                    dica = "É um reptil";
+
+                } else if (seletor >= 141 && seletor <= 146) {
+
+                    dica = "É um roedor";
+
+                } else if (seletor >= 147 && seletor <= 148) {
+
+                    dica = "É um urso";
+
+                } else if (seletor >= 149 && seletor <= 156) {
+
+                    dica = "É um primata";
+
+                } else if (seletor >= 157 && seletor <= 166) {
+
+                    dica = "É um peixe";
+
+                } else if (seletor >= 167 && seletor <= 174) {
+
+                    dica = "É um mamífero aquático";
+
+                } else if (seletor >= 175 && seletor <= 181) {
+
+                    dica = "É um crustácio";
+
+                } else if (seletor >= 182 && seletor <= 190) {
+
+                    dica = "É um anfíbio";
+
+                } else if (seletor >= 191 && seletor <= 195) {
+
+                    dica = "É um canídeo";
+
+                } else if (seletor >= 196 && seletor <= 199) {
+
+                    dica = "É um mamífero grande";
+
+                }
+
+            } else if (seletor >= 200 && seletor <= 299) {
+
+                tema = "Filmes";
+
+                if (seletor >= 200 && seletor <= 204) {
+
+                    dica = "É um filme de fantasia";
+
+                } else if (seletor >= 205 && seletor <= 207) {
+
+                    dica = "É um filme de mafia";
+
+                } else if (seletor >= 208 && seletor <= 218) {
+
+                    dica = "É um filme de herói";
+
+                } else if (seletor >= 219 && seletor <= 233) {
+
+                    dica = "É um filme de ação";
+
+                } else if (seletor >= 234 && seletor <= 246) {
+
+                    dica = "É um filme de drama";
+
+                } else if (seletor >= 247 && seletor <= 259) {
+
+                    dica = "É um filme de terror";
+
+                } else if (seletor >= 260 && seletor <= 276) {
+
+                    dica = "É um filme de ficção científica";
+
+                } else if (seletor == 277) {
+
+                    dica = "É um filme de faroeste";
+
+                } else if (seletor >= 278 && seletor <= 281) {
+
+                    dica = "É um filme de guerra";
+
+                } else if (seletor >= 282 && seletor <= 292) {
+
+                    dica = "É um filme de comédia";
+
+                } else if (seletor >= 293 && seletor <= 295) {
+
+                    dica = "É um filme de crime";
+
+                } else if (seletor >= 296 && seletor <= 299) {
+
+                    dica = "É um filme de suspence";
+
+                }
+
+            } else if (seletor >= 300 && seletor <= 399) {
+
+                tema = "Filmes animados";
+
+                if (seletor >= 300 && seletor <= 314) {
+
+                    dica = "Esse filme é da DreamWorks";
+
+                } else if (seletor >= 315 && seletor <= 355) {
+
+                    dica = "Esse filme é da Disney";
+
+                } else if (seletor >= 356 && seletor <= 369) {
+
+                    dica = "Esse filme é da Pixar";
+
+                } else if (seletor >= 370 && seletor <= 373) {
+
+                    dica = "Esse filme é da 20th Century Studios";
+
+                } else if (seletor == 374) {
+
+                    dica = "Esse filme é da Nickelodeon";
+
+                } else if (seletor >= 375 && seletor <= 376) {
+
+                    dica = "Esse filme é da Paramount";
+
+                } else if (seletor >= 377 && seletor <= 378) {
+
+                    dica = "Esse filme é da Universal";
+
+                } else if (seletor >= 379 && seletor <= 388) {
+
+                    dica = "Esse filme é da Columbia Pictures/Sony Pictures";
+
+                } else if (seletor == 389) {
+
+                    dica = "Esse filme é da Focus Features";
+
+                } else if (seletor >= 390 && seletor <= 393) {
+
+                    dica = "Esse filme é da Illumination";
+
+                } else if (seletor >= 394 && seletor <= 398) {
+
+                    dica = "Esse filme é da Warner Bros.";
+
+                } else if (seletor == 399) {
+
+                    dica = "Esse filme é da Netflix";
+
+                }
+
+            } else if (seletor >= 400 && seletor <= 499) {
+
+                tema = "Paises";
+
+                if (seletor >= 400 && seletor <= 407) {
+
+                    dica = "Esse país é da América do Sul";
+
+                } else if (seletor >= 408 && seletor <= 411) {
+
+                    dica = "Esse país é da América do Norte";
+
+                } else if (seletor >= 412 && seletor <= 443) {
+
+                    dica = "Esse país é da Europa";
+
+                } else if (seletor >= 444 && seletor <= 460) {
+
+                    dica = "Esse país é da Ásia";
+
+                } else if (seletor >= 461 && seletor <= 467) {
+
+                    dica = "Esse país é do Oriente Médio";
+
+                } else if (seletor == 468) {
+
+                    dica = "Esse país é da Eurasia";
+
+                } else if (seletor >= 469 && seletor <= 489) {
+
+                    dica = "Esse país é da África";
+
+                } else if (seletor >= 490 && seletor <= 495) {
+
+                    dica = "Esse país é da América Central";
+
+                } else if (seletor >= 496 && seletor <= 499) {
+
+                    dica = "Esse país é da Oceania";
+
+                }
+
+            } else if (seletor >= 500 && seletor <= 599) {
+
+                tema = "Bandas de Heavy Metal";
+
+                if (seletor >= 500 && seletor <= 512) {
+
+                    dica = "É uma banda de Thrash Metal";
+
+                } else if (seletor >= 513 && seletor <= 514) {
+
+                    dica = "É uma banda de Metal Industrial";
+
+                } else if (seletor >= 515 && seletor <= 523) {
+
+                    dica = "É uma banda de Metal Alternativo";
+
+                } else if (seletor >= 524 && seletor <= 534) {
+
+                    dica = "É uma banda de Death Metal";
+
+                } else if (seletor >= 535 && seletor <= 544) {
+
+                    dica = "É uma banda de Metal Clássico";
+
+                } else if (seletor >= 545 && seletor <= 546) {
+
+                    dica = "É uma banda de Doom Metal";
+
+                } else if (seletor >= 547 && seletor <= 555) {
+
+                    dica = "É uma banda de Power Metal";
+
+                } else if (seletor >= 556 && seletor <= 574) {
+
+                    dica = "É uma banda de Black Metal";
+
+                } else if (seletor == 575) {
+
+                    dica = "É uma banda de Brutal Metal";
+
+                } else if (seletor >= 576 && seletor <= 585) {
+
+                    dica = "É uma banda de Metal Progressivo";
+
+                } else if (seletor >= 586 && seletor <= 588) {
+
+                    dica = "É uma banda de Groove Metal";
+
+                } else if (seletor == 589) {
+
+                    dica = "É uma banda de Ghotic Metal";
+
+                } else if (seletor >= 590 && seletor <= 593) {
+
+                    dica = "É uma banda de Metalcore";
+
+                } else if (seletor == 594) {
+
+                    dica = "É uma banda de Symphonic Metal";
+
+                } else if (seletor == 595) {
+
+                    dica = "É uma banda de Sludge Metal";
+
+                } else if (seletor == 596) {
+
+                    dica = "É uma banda de Djent";
+
+                } else if (seletor == 597) {
+
+                    dica = "É uma banda de Glam Metal";
+
+                } else if (seletor >= 598 && seletor <= 599) {
+
+                    dica = "É uma banda de Deathcore";
+
+                }
+
+            } else if (seletor >= 635 && seletor <= 639) {
+
+                tema = "???";
+
+                if (seletor == 635) {
+
+                    dica = "O programador deste jogo da forca";
+
+                } else if (seletor == 636) {
+
+                    dica = "A escola";
+
+                } else if (seletor >= 637 && seletor <= 639) {
+
+                    dica = "Um professor";
+
+                }
+
+            } else if (seletor >= 600 && seletor <= 626) {
+
+                tema = "Estados do Brasil";
+
+                if (seletor >= 600 && seletor <= 602) {
+
+                    dica = "É um estado da região sul";
+
+                } else if (seletor >= 603 && seletor <= 606) {
+
+                    dica = "É um estado da região sudeste";
+
+                } else if (seletor >= 607 && seletor <= 615) {
+
+                    dica = "É um estado da região nordeste";
+
+                } else if (seletor >= 616 && seletor <= 622) {
+
+                    dica = "É um estado da região norte";
+
+                } else if (seletor >= 623 && seletor <= 626) {
+
+                    dica = "É um estado da região centro-oeste";
+                }
+
+            } else if (seletor >= 627 && seletor <= 634) {
+
+                tema = "Planetas do Sistema Solar";
+
+                if (seletor >= 627 && seletor <= 630) {
+
+                    dica = "É um planeta terroso";
+
+                } else if (seletor >= 631 && seletor <= 634) {
+
+                    dica = "É um planeta gasoso";
+
+                }
+
+            } else if (seletor >= 640 && seletor <= 739) {
+
+                tema = "Series animadas";
+
+                if (seletor >= 640 && seletor <= 675) {
+
+                    dica = "É um desenho da Cartoon Network";
+
+                } else if (seletor >= 676 && seletor <= 687) {
+
+                    dica = "É um desenho da Nickelodeon";
+
+                } else if (seletor >= 688 && seletor <= 690) {
+
+                    dica = "É um desenho do Adult Swim";
+
+                } else if (seletor >= 691 && seletor <= 697) {
+
+                    dica = "É um desenho da Netflix";
+
+                } else if (seletor >= 698 && seletor <= 701) {
+
+                    dica = "É um desenho do Fox";
+
+                } else if (seletor >= 702 && seletor <= 717) {
+
+                    dica = "É um desenho da Disney";
+
+                } else if (seletor >= 718 && seletor <= 719) {
+
+                    dica = "É um desenho da Universal";
+
+                } else if (seletor == 720) {
+
+                    dica = "É um desenho da Rankin/Bass Animated Entertainment";
+
+                } else if (seletor == 721) {
+
+                    dica = "É um desenho da Marvel Pictures";
+
+                } else if (seletor >= 722 && seletor <= 732) {
+
+                    dica = "É um desenho da Hanna-Barbera";
+
+                } else if (seletor >= 733 && seletor <= 734) {
+
+                    dica = "É um desenho da Paramount";
+
+                } else if (seletor >= 735 && seletor <= 736) {
+
+                    dica = "É um desenho da MGM";
+
+                } else if (seletor >= 737 && seletor <= 739) {
+
+                    dica = "É um desenho da Discovery Kids";
+
+                }
+
+            } else if (seletor >= 740 && seletor <= 837) {
+
+                tema = "Games";
+
+                if (seletor >= 740 && seletor <= 741) {
+
+                    dica = "É um jogo sandbox";
+
+                } else if (seletor == 742) {
+
+                    dica = "É um jogo de mundo aberto";
+
+                } else if (seletor >= 743 && seletor <= 755) {
+
+                    dica = "É um jogo FPS (first-person shooter)";
+
+                } else if (seletor >= 756 && seletor <= 772) {
+
+                    dica = "É um jogo RPG (role-playing game)";
+
+                } else if (seletor >= 773 && seletor <= 775) {
+
+                    dica = "É um jogo de battle royale";
+
+                } else if (seletor >= 776 && seletor <= 780) {
+
+                    dica = "É um jogo de esporte";
+
+                } else if (seletor >= 781 && seletor <= 783) {
+
+                    dica = "É um jogo MOBA (multiplayer online battle arena)";
+
+                } else if (seletor == 784) {
+
+                    dica = "É um jogo MMORPG (massive multiplayer online role-playing game)";
+
+                } else if (seletor >= 785 && seletor <= 788) {
+
+                    dica = "É um jogo de luta";
+
+                } else if (seletor >= 789 && seletor <= 793) {
+
+                    dica = "É um jogo de arcade";
+
+                } else if (seletor >= 794 && seletor <= 802) {
+
+                    dica = "É um jogo de plataforma";
+
+                } else if (seletor == 803) {
+
+                    dica = "É um jogo de música";
+
+                } else if (seletor >= 804 && seletor <= 808) {
+
+                    dica = "É um jogo de sobrevivência";
+
+                } else if (seletor >= 809 && seletor <= 813) {
+
+                    dica = "É um jogo de simulação";
+
+                } else if (seletor >= 814 && seletor <= 815) {
+
+                    dica = "É um jogo de corrida";
+
+                } else if (seletor >= 816 && seletor <= 817) {
+
+                    dica = "É um jogo RTS (real-time strategy)";
+
+                } else if (seletor >= 818 && seletor <= 820) {
+
+                    dica = "É um jogo de aventura";
+
+                } else if (seletor >= 821 && seletor <= 824) {
+
+                    dica = "É um jogo stealth";
+
+                } else if (seletor >= 825 && seletor <= 830) {
+
+                    dica = "É um jogo de ação";
+
+                } else if (seletor == 831) {
+
+                    dica = "É um shutter";
+
+                } else if (seletor >= 832 && seletor <= 833) {
+
+                    dica = "É um jogo de terror";
+
+                } else if (seletor >= 834 && seletor <= 835) {
+
+                    dica = "É um jogo de dança";
+
+                } else if (seletor >= 836 && seletor <= 837) {
+
+                    dica = "É um jogo shoot 'em up";
+
+                }
+            }
+
+            // criacao da "palavra" que é mostrada
+            String resposta[];
+
+            resposta = new String[word[seletor].length()];
+
+            int qntEspaco = 0;
+
+            // print das casas
+            for (int pl = 0; pl < word[seletor].length(); pl++) {
+
+                if (word[seletor].charAt(pl) == ' ') {
+
+                    resposta[pl] = "  ";
+
+                } else if (word[seletor].charAt(pl) == '-') {
+
+                    resposta[pl] = "- ";
+
+                } else if (word[seletor].charAt(pl) == '.') {
+
+                    resposta[pl] = ". ";
+
+                } else if (word[seletor].charAt(pl) == '/') {
+
+                    resposta[pl] = "/ ";
+
+                } else if (word[seletor].charAt(pl) == '!') {
+
+                    resposta[pl] = "! ";
+
+                } else if (word[seletor].charAt(pl) == '?') {
+
+                    resposta[pl] = "? ";
+
+                } else if (word[seletor].charAt(pl) == '(') {
+
+                    resposta[pl] = "( ";
+
+                } else if (word[seletor].charAt(pl) == ')') {
+
+                    resposta[pl] = ") ";
+
+                } else if (word[seletor].charAt(pl) == ',') {
+
+                    resposta[pl] = ", ";
+
+                } else if (word[seletor].charAt(pl) == '&') {
+
+                    resposta[pl] = "& ";
+
+                } else if (word[seletor].charAt(pl) == '\'') {
+
+                    resposta[pl] = "' ";
+
+                } else {
+
+                    resposta[pl] = "_ ";
+                }
+
+            }
+
+            String buneco[];
+            buneco = new String[7];
+            // partes do buneco inforcado
+            buneco[0] = "_______\n|             |\n|            O\n|            /|\\\n|            / \\\n|";
+            buneco[1] = "_______\n|             |\n|            O\n|            /|\\\n|            /\n|";
+            buneco[2] = "_______\n|             |\n|            O\n|            /|\\\n|\n|";
+            buneco[3] = "_______\n|             |\n|            O\n|            /|\n|\n|";
+            buneco[4] = "_______\n|             |\n|            O\n|             |\n|\n|";
+            buneco[5] = "_______\n|             |\n|            O\n|            \n|\n|";
+            buneco[6] = "_______\n|             |\n|\n|\n|\n|";
+
+            String chute = "";
+
+            // numero de jogadas
+            int tent = 6;
+
+            boolean venceu = false;
+
+            String usadas = " ";
+
+            boolean chuteInteiro = false;
+
+            int jk = 0;
+
+            boolean letraSimples = false;
+
+            // parte principal
+            while (tent > 0 && !venceu) {
+
+                int qntTotalChute = 0;
+
+                letraSimples = false;
+
+                chuteInteiro = false;
+
+                String mensagem = " ";
+
+                String display = null;
+
+                for (int y = 0; y < resposta.length; y++) {
+
+                    mensagem = mensagem + resposta[y] + " ";
+                }
+
+                if (tent > 3) {
+
+                    display = "Tema: " + tema + "\n" + buneco[tent] + "\n" + mensagem + "\nLetras Usadas:" + "\n" + usadas + "\n\n Digite uma letra\nSe quiser chutar a palavra, digite  ela inteira, caso esteja incorreta, você perdera a partida\n Aviso: não é necessário o uso de maiusculas e assentos, incluindo “ç“";
+                } else {
+
+                    display = "Tema: " + tema + "\n" + "\nDica: " + dica + "\n" + buneco[tent] + "\n" + mensagem + "\nLetras Usadas:" + "\n" + usadas + "\n\n Digite uma letra\nSe quiser chutar a palavra, digite  ela inteira, caso esteja incorreta, você perdera a partida\n Aviso: não é necessário o uso de maiusculas e assentos, incluindo “ç“";
+                }
+
+                do {
+                    // usuario digita a letra
+                    chute = JOptionPane.showInputDialog(display);
+
+                    if (chute.isEmpty()) {
+
+                        JOptionPane.showMessageDialog(null, "Nenhuma letra foi digitada, tente novamente");
+
+                    }
+
+                } while (chute.isEmpty());
+
+                boolean acertou = false;
+
+                if (chute.length() == resposta.length) {
+
+                    chuteInteiro = true;
+
+                }
+
+                for (int tp = 0; tp < word[seletor].length(); tp++) {
+
+                    if (chuteInteiro) {
+
+                        jk = tp;
+
+                    } else {
+
+                        jk = 0;
+
+                    }
+
+                    if (!chuteInteiro && chute.charAt(0) == resposta[tp].charAt(0) && !resposta[tp].equals("_ ")) {
+
+                        JOptionPane.showMessageDialog(null, "Você já usou esta letra, tente novamente");
+
+                        acertou = true;
+
+                        break;
+
+                        // comparacao
+                        //a
+                    } else if (chute.charAt(jk) == 'a') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'a') {
+
+                            resposta[tp] = "a ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'â') {
+
+                            resposta[tp] = "â ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'á') {
+
+                            resposta[tp] = "á ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'ã') {
+
+                            resposta[tp] = "ã ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'A') {
+
+                            resposta[tp] = "A ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Â') {
+
+                            resposta[tp] = "Â ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Á') {
+
+                            resposta[tp] = "Á ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Ã') {
+
+                            resposta[tp] = "Ã ";
+
+                            acertou = true;
+
+                        }
+                    } // b
+                    else if (chute.charAt(jk) == 'b') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'b') {
+
+                            resposta[tp] = "b ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'B') {
+
+                            resposta[tp] = "B ";
+
+                            acertou = true;
+
+                        }
+                    } // c
+                    else if (chute.charAt(jk) == 'c') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'c') {
+
+                            resposta[tp] = "c ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'ç') {
+
+                            resposta[tp] = "ç ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'C') {
+
+                            resposta[tp] = "C ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Ç') {
+
+                            resposta[tp] = "Ç ";
+
+                            acertou = true;
+
+                        }
+                    } // d
+                    else if (chute.charAt(jk) == 'd') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'd') {
+
+                            resposta[tp] = "d ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'D') {
+
+                            resposta[tp] = "D ";
+
+                            acertou = true;
+
+                        }
+                    } // e
+                    else if (chute.charAt(jk) == 'e') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'e') {
+
+                            resposta[tp] = "e ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'é') {
+
+                            resposta[tp] = "é ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'ê') {
+
+                            resposta[tp] = "ê ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'E') {
+
+                            resposta[tp] = "E ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'É') {
+
+                            resposta[tp] = "É ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Ê') {
+
+                            resposta[tp] = "Ê ";
+
+                            acertou = true;
+
+                        }
+                    } else if (chute.charAt(jk) == 'f') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'f') {
+
+                            resposta[tp] = "f ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'F') {
+
+                            resposta[tp] = "F ";
+
+                            acertou = true;
+
+                        }
+                    } // g
+                    else if (chute.charAt(jk) == 'g') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'g') {
+
+                            resposta[tp] = "g ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'G') {
+
+                            resposta[tp] = "G ";
+
+                            acertou = true;
+
+                        }
+                    } // h
+                    else if (chute.charAt(jk) == 'h') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'h') {
+
+                            resposta[tp] = "h ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'H') {
+
+                            resposta[tp] = "H ";
+
+                            acertou = true;
+
+                        }
+                    } // i
+                    else if (chute.charAt(jk) == 'i') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'i') {
+
+                            resposta[tp] = "i ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'í') {
+
+                            resposta[tp] = "í ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'î') {
+
+                            resposta[tp] = "î ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'I') {
+
+                            resposta[tp] = "I ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Í') {
+
+                            resposta[tp] = "Í ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Î') {
+
+                            resposta[tp] = "Î ";
+
+                            acertou = true;
+
+                        }
+                    } // j
+                    else if (chute.charAt(jk) == 'j') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'j') {
+
+                            resposta[tp] = "j ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'J') {
+
+                            resposta[tp] = "J ";
+
+                            acertou = true;
+
+                        }
+                    } // k
+                    else if (chute.charAt(jk) == 'k') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'k') {
+
+                            resposta[tp] = "k ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'K') {
+
+                            resposta[tp] = "K ";
+
+                            acertou = true;
+
+                        }
+                    } // l
+                    else if (chute.charAt(jk) == 'l') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'l') {
+
+                            resposta[tp] = "l ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'L') {
+
+                            resposta[tp] = "L ";
+
+                            acertou = true;
+
+                        }
+                    } // m
+                    else if (chute.charAt(jk) == 'm') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'm') {
+
+                            resposta[tp] = "m ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'M') {
+
+                            resposta[tp] = "M ";
+
+                            acertou = true;
+
+                        }
+                    } // n
+                    else if (chute.charAt(jk) == 'n') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'n') {
+
+                            resposta[tp] = "n ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'N') {
+
+                            resposta[tp] = "N ";
+
+                            acertou = true;
+
+                        }
+                    } // o
+                    else if (chute.charAt(jk) == 'o') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'o') {
+
+                            resposta[tp] = "o ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'ó') {
+
+                            resposta[tp] = "ó ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'ô') {
+
+                            resposta[tp] = "ô ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'õ') {
+
+                            resposta[tp] = "õ ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'ö') {
+
+                            resposta[tp] = "ö ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'O') {
+
+                            resposta[tp] = "O ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Ó') {
+
+                            resposta[tp] = "Ó ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Ô') {
+
+                            resposta[tp] = "Ô ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Õ') {
+
+                            resposta[tp] = "Õ ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Ö') {
+
+                            resposta[tp] = "Ö ";
+
+                            acertou = true;
+                        }
+                    } // p
+                    else if (chute.charAt(jk) == 'p') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'p') {
+
+                            resposta[tp] = "p ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'P') {
+
+                            resposta[tp] = "P ";
+
+                            acertou = true;
+                        }
+                    } // q
+                    else if (chute.charAt(jk) == 'q') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'q') {
+
+                            resposta[tp] = "q ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Q') {
+
+                            resposta[tp] = "Q ";
+
+                            acertou = true;
+
+                        }
+                    } // r
+                    else if (chute.charAt(jk) == 'r') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'r') {
+
+                            resposta[tp] = "r ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'R') {
+
+                            resposta[tp] = "R ";
+
+                            acertou = true;
+
+                        }
+                    } // s
+                    else if (chute.charAt(jk) == 's') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 's') {
+
+                            resposta[tp] = "s ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'S') {
+
+                            resposta[tp] = "S ";
+
+                            acertou = true;
+
+                        }
+                    } // t
+                    else if (chute.charAt(jk) == 't') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 't') {
+
+                            resposta[tp] = "t ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'T') {
+
+                            resposta[tp] = "T ";
+
+                            acertou = true;
+
+                        }
+                    } // u
+                    else if (chute.charAt(jk) == 'u') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'u') {
+
+                            resposta[tp] = "u ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'ú') {
+
+                            resposta[tp] = "ú ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'û') {
+
+                            resposta[tp] = "û ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'ü') {
+
+                            resposta[tp] = "ü ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'U') {
+
+                            resposta[tp] = "U ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Ú') {
+
+                            resposta[tp] = "Ú ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Û') {
+
+                            resposta[tp] = "Û ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Ü') {
+
+                            resposta[tp] = "Ü ";
+
+                            acertou = true;
+
+                        }
+                    } // v
+                    else if (chute.charAt(jk) == 'v') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'v') {
+
+                            resposta[tp] = "v ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'V') {
+
+                            resposta[tp] = "V ";
+
+                            acertou = true;
+
+                        }
+                    } // w
+                    else if (chute.charAt(jk) == 'w') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'w') {
+
+                            resposta[tp] = "w ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'W') {
+
+                            resposta[tp] = "W ";
+
+                            acertou = true;
+
+                        }
+                    } // x
+                    else if (chute.charAt(jk) == 'x') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'x') {
+
+                            resposta[tp] = "x ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'X') {
+
+                            resposta[tp] = "X ";
+
+                            acertou = true;
+
+                        }
+                    } // y
+                    else if (chute.charAt(jk) == 'y') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'y') {
+
+                            resposta[tp] = "y ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'ÿ') {
+
+                            resposta[tp] = "ÿ ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Y') {
+
+                            resposta[tp] = "Y ";
+
+                            acertou = true;
+
+                        }
+                    } // z
+                    else if (chute.charAt(jk) == 'z') {
+
+                        letraSimples = true;
+
+                        if (word[seletor].charAt(tp) == 'z') {
+
+                            resposta[tp] = "z ";
+
+                            acertou = true;
+
+                        } else if (word[seletor].charAt(tp) == 'Z') {
+
+                            resposta[tp] = "Z ";
+
+                            acertou = true;
+
+                        }
+                    } else if (chuteInteiro) {
+
+                        if (chute.charAt(jk) == '.' && word[seletor].charAt(tp) == '.') {
+
+                            acertou = true;
+
+                        } else if (chute.charAt(jk) == '-' && word[seletor].charAt(tp) == '-') {
+
+                            acertou = true;
+
+                        } else if (chute.charAt(jk) == ' ' && word[seletor].charAt(tp) == ' ') {
+
+                            acertou = true;
+
+                        } else if (chute.charAt(jk) == '/' && word[seletor].charAt(tp) == '/') {
+
+                            acertou = true;
+
+                        } else if (chute.charAt(jk) == '!' && word[seletor].charAt(tp) == '!') {
+
+                            acertou = true;
+
+                        } else if (chute.charAt(jk) == '?' && word[seletor].charAt(tp) == '?') {
+
+                            acertou = true;
+
+                        } else if (chute.charAt(jk) == '(' && word[seletor].charAt(tp) == '(') {
+
+                            acertou = true;
+
+                        } else if (chute.charAt(jk) == ')' && word[seletor].charAt(tp) == ')') {
+
+                            acertou = true;
+
+                        } else if (chute.charAt(jk) == ',' && word[seletor].charAt(tp) == ',') {
+
+                            acertou = true;
+
+                        } else if (chute.charAt(jk) == '&' && word[seletor].charAt(tp) == '&') {
+
+                            acertou = true;
+
+                        } else if (chute.charAt(jk) == '\'' && word[seletor].charAt(tp) == '\'') {
+
+                            acertou = true;
+
+                        }
+
+                    }
+
+                    if (chuteInteiro && acertou) {
+
+                        qntTotalChute++;
+
+                    }
+
+                }
+
+                if (chuteInteiro && qntTotalChute == resposta.length) {
+
+                    venceu = true;
+
+                } else if (chuteInteiro) {
+
+                    acertou = false;
+                }
+                if (!letraSimples) {
+
+                    JOptionPane.showMessageDialog(null, "Utilize apenas letras simples, sem acentos ou maiusculas, incluindo 'ç'.\nTente novamente");
+
+                    acertou = true;
+
+                }
+                for (int du = 0; du < usadas.length(); du++) {
+                    if (chute.charAt(0) == usadas.charAt(du)) {
+
+                        JOptionPane.showMessageDialog(null, "Você já usou esta letra, tente novamente");
+
+                        acertou = true;
+
+                        break;
+                    }
+                }
+                // caso tenha errado
+                if (!acertou && chuteInteiro) {
+
+                    tent = 0;
+
+                } else if (!acertou && letraSimples) {
+
+                    tent--;
+
+                    // guarda as letras erradas ja utilizadas
+                    usadas = usadas + chute.charAt(0) + " - ";
+                }
+
+                // verifica se a palavra foi completada
+                venceu = true;
+                for (int v = 0; v < word[seletor].length(); v++) {
+                    if (resposta[v].equals("_ ")) {
+                        venceu = false;
+                        break;
+                    }
+                }
+
+            }
+
+            // da a mensagem final
+            if (venceu) {
+                // mensagem caso tenha acertado uma palavra secreta
+                if (seletor >= 635 && seletor <= 639) {
+                    JOptionPane.showMessageDialog(null,
+                            buneco[tent] + "\nParabéns! Você encontrou uma palavra secreta! (0" + (seletor - 634) + " de 05)\nA palavra era: " + word[seletor]);
+                } else {
+                    // mensagem caso tenha acertado uma palavra normal
+                    JOptionPane.showMessageDialog(null, buneco[tent] + "\nParabéns! Você venceu o jogo!\n A palavra era: " + word[seletor]);
+                }
+            } else {
+                // mensagem caso tenha perdido
+                JOptionPane.showMessageDialog(null, buneco[tent] + "\nVocê perdeu!\nA palavra correta era: " + word[seletor]);
+            }
+
+            int reiniciar = JOptionPane.showConfirmDialog(null, "Você quer tentar novamente?");
+
+            if (reiniciar == JOptionPane.YES_OPTION) {
+
+                denovo = true;
+
+            } else if (reiniciar == JOptionPane.NO_OPTION) {
+
+                JOptionPane.showMessageDialog(null, "Obrigado por jogar!\n\nFeito por Kauã C. Seabra\n11/04/2023 - 13/04/2023\nUltima atualização: 17/05/2023");
+
+                denovo = false;
+
+            } else {
+
+                denovo = false;
+
+            }
+
+        }
+        System.out.println("\nFeito por Kauã C. Seabra\n11/04/2023 - 13/04/2023\nUltima atualização: 17/05/2023");
+    }
+}
