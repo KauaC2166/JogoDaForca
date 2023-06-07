@@ -1,7 +1,7 @@
 package jogodaforca;
 //Feito por: Kauã C. Seabra
 //11/04/2023 - 13/04/2023
-//Ultima atualização: 18/05/2023
+//Ultima atualização: 06/06/2023
 
 import java.util.Random;
 
@@ -11,7 +11,7 @@ public class JogoDaForca {
 
     public static void main(String[] args) {
         // mensagem inicial
-        JOptionPane.showMessageDialog(null, "Bem vindo ao Jogo da Forca!\n_______\n|             |\n|            O\n|            /|\\\n|            / \\\n|\n3 dias de trabalho, mais de 2700 linhas de codigo e 838 palavras!");
+        JOptionPane.showMessageDialog(null, "Bem vindo ao Jogo da Forca!\n_______\n|             |\n|            O\n|            /|\\\n|            / \\\n|\nAlguns dias de trabalho, mais de 4900 linhas de codigo e 1909 palavras!");
 
         boolean denovo = true;
 
@@ -25,12 +25,14 @@ public class JogoDaForca {
             int jk;
             int qntTotalChute;
             int reiniciar;
+            int letraSimples;
+            int confirmInteiro;
 
             boolean modoOk = true;
             boolean venceu = false;
             boolean chuteInteiro;
-            boolean letraSimples;
             boolean acertou;
+            boolean fzrComp;
 
             String escolha = " ";
             String word[];
@@ -46,9 +48,9 @@ public class JogoDaForca {
             // selecão de tema
             while (modoOk) {
 
-                escolha = JOptionPane.showInputDialog("Escolha um tema:\n0 - Aleatorio\n1 - Frutas, vegetais, grãos, ervas, etc.\n2 - Animais\n3 - Filmes\n4 - Filmes animados\n5 - Series animadas\n6 - Paises\n7 - Estados do Brasil\n8 - Planetas do Sistema Solar\n9 - Bandas de Heavy Metal\n 10 - Games\n \n838 palavras possiveis");
+                escolha = JOptionPane.showInputDialog("Escolha um tema:\n0 - Aleatorio\n1 - Frutas, vegetais, grãos, ervas, etc.\n2 - Animais\n3 - Profissões\n4 - Filmes\n5 - Filmes animados\n6 - Series animadas\n7 - Series\n8 - Paises\n9 - Capitais dos paises\n10 - Estados do Brasil\n11 - Capitais dos estados do Brasil\n12 - Planetas do Sistema Solar\n13 - Elementos da Tabela Periódica\n14 - Games\n15 - Bandas e artistas de Rock\n16 - Bandas de Heavy Metal\n17 - Albuns de Heavy Metal\n18 - Musicas do Megadeth\n19 - Musicas do Metallica\n20 - Musicas do System Of A Down\n21 - Musicas do Rammstein\n\n1909 palavras possiveis");
 
-                if (escolha.equals("0") || escolha.equals("1") || escolha.equals("2") || escolha.equals("3") || escolha.equals("4") || escolha.equals("5") || escolha.equals("6") || escolha.equals("7") || escolha.equals("8") || escolha.equals("9") || escolha.equals("10") || escolha.equals("11")) {
+                if (escolha.equals("0") || escolha.equals("1") || escolha.equals("2") || escolha.equals("3") || escolha.equals("4") || escolha.equals("5") || escolha.equals("6") || escolha.equals("7") || escolha.equals("8") || escolha.equals("9") || escolha.equals("10") || escolha.equals("11") || escolha.equals("12") || escolha.equals("13") || escolha.equals("14") || escolha.equals("15") || escolha.equals("16") || escolha.equals("17") || escolha.equals("18") || escolha.equals("19") || escolha.equals("20") || escolha.equals("21") || escolha.equals("22")) {
 
                     modoOk = false;
 
@@ -72,7 +74,7 @@ public class JogoDaForca {
             switch (selecTema) {
                 case 0:
                     min = 0;
-                    max = 838;
+                    max = 1908;
 
                     // frutas vegetais etc
                     break;
@@ -86,57 +88,122 @@ public class JogoDaForca {
                     min = 100;
                     max = 199;
 
-                    // filmes
+                    //profissoes
                     break;
                 case 3:
+                    min = 1264;
+                    max = 1363;
+
+                    // filmes
+                    break;
+                case 4:
                     min = 200;
                     max = 299;
 
                     // filmes animados
                     break;
-                case 4:
+                case 5:
                     min = 300;
                     max = 399;
 
                     // series animadas
                     break;
-                case 5:
+                case 6:
                     min = 640;
                     max = 739;
 
+                    //series
+                    break;
+                case 7:
+                    min = 1064;
+                    max = 1163;
+
                     // paises
                     break;
-                case 6:
+                case 8:
                     min = 400;
                     max = 499;
 
+                    //capitais dos paises
+                    break;
+                case 9:
+                    min = 865;
+                    max = 963;
+
                     // estados do brasil
                     break;
-                case 7:
+                case 10:
                     min = 600;
                     max = 626;
 
+                    //capitais dos estados
+                    break;
+                case 11:
+                    min = 838;
+                    max = 864;
+
                     // planetas
                     break;
-                case 8:
+                case 12:
                     min = 627;
                     max = 634;
 
-                    // bandas
+                    //elementos da tabela periodica
                     break;
-                case 9:
-                    min = 500;
-                    max = 599;
+                case 13:
+                    min = 1364;
+                    max = 1439;
 
                     //games
                     break;
-                case 10:
+                case 14:
                     min = 740;
                     max = 837;
+                    //bandas de rock
+                    break;
+                case 15:
+                    min = 1164;
+                    max = 1263;
+
+                    // bandas de metal
+                    break;
+                case 16:
+                    min = 500;
+                    max = 599;
+
+                    //albuns de metal
+                    break;
+                case 17:
+                    min = 964;
+                    max = 1063;
+
+                    //musicas megadeth
+                    break;
+                case 18:
+                    min = 1440;
+                    max = 1612;
+
+                    //musicas metallica
+                    break;
+                case 19:
+                    min = 1613;
+                    max = 1736;
+
+                    //musicas do soad
+                    break;
+                case 20:
+                    min = 1737;
+                    max = 1809;
+
+                    //musicasd do rammstein
+                    break;
+                case 21:
+                    min = 1810;
+                    max = 1908;
 
                     //extras
                     break;
-                case 11:
+                case 22:
                     min = 635;
                     max = 639;
 
@@ -146,7 +213,7 @@ public class JogoDaForca {
             }
 
             // palavras
-            word = new String[838];
+            word = new String[1909];
             // frutas, vegetais, graos, ervas, etc
             //sub-frutas
             word[0] = "morango";
@@ -226,28 +293,28 @@ public class JogoDaForca {
             word[70] = "rúcula";
             word[71] = "aspargo";
             word[72] = "couve";
-            word[73] = "alcachofa";
+            word[73] = "alcachofra";
             word[74] = "mostarda";
             word[75] = "alecrim";
             word[76] = "hortelã";
             word[77] = "açafrão";
             word[78] = "erva-mate";
-            word[79] = "canela";
-            word[80] = "cravo";
-            word[81] = "erva-doce";
-            word[82] = "anis";
-            word[83] = "cidreira";
-            word[84] = "hibisco";
-            word[85] = "loro";
+            word[79] = "erva-doce";
+            word[80] = "anis";
+            word[81] = "cidreira";
+            word[82] = "hibisco";
+            word[83] = "loro";
 
-            //sub-nozes e sementes
-            word[86] = "pinhão";
-            word[87] = "castanha";
-            word[88] = "amendoim";
-            word[89] = "pistache";
-            word[90] = "noz-moscada";
-            word[91] = "amêndoa";
-            word[92] = "café";
+            //sub-nozes, sementes e especiarias
+            word[84] = "pinhão";
+            word[85] = "castanha";
+            word[86] = "amendoim";
+            word[87] = "pistache";
+            word[88] = "noz-moscada";
+            word[89] = "amêndoa";
+            word[90] = "café";
+            word[91] = "canela";
+            word[92] = "cravo";
 
             //sub-grãos e cereais
             word[93] = "arroz";
@@ -670,7 +737,7 @@ public class JogoDaForca {
             word[416] = "Croácia";
             word[417] = "Grécia";
             word[418] = "Áustria";
-            word[419] = "Macedônia";
+            word[419] = "Macedônia do Norte";
             word[420] = "Romênia";
             word[421] = "Portugal";
             word[422] = "Andorra";
@@ -717,7 +784,7 @@ public class JogoDaForca {
 
             //sub-oriente medio
             word[461] = "Turquia";
-            word[462] = "Emirados Árabes";
+            word[462] = "Emirados Árabes Unidos";
             word[463] = "Arábia Saudita";
             word[464] = "Qatar";
             word[465] = "Israel";
@@ -739,7 +806,7 @@ public class JogoDaForca {
             word[477] = "Namíbia";
             word[478] = "Lesoto";
             word[479] = "Moçambique";
-            word[480] = "Congo";
+            word[480] = "República do Congo";
             word[481] = "República Democrática do Congo";
             word[482] = "Gabão";
             word[483] = "Nigéria";
@@ -1238,6 +1305,1377 @@ public class JogoDaForca {
             word[836] = "Enter the Gungeon";
             word[837] = "Hotline Miami";
 
+            // capitais dos estados do brasil
+            // sub-sul
+            word[838] = "Porto Alegre";
+            word[839] = "Florianópolis";
+            word[840] = "Curitiba";
+
+            // sub-sudeste
+            word[841] = "São Paulo";
+            word[842] = "Rio de Janeiro";
+            word[843] = "Vitória";
+            word[844] = "Belo Horizonte";
+
+            // sub-nordeste
+            word[845] = "Salvador";
+            word[846] = "João Pessoa";
+            word[847] = "Recife";
+            word[848] = "Maceió";
+            word[849] = "Fortaleza";
+            word[850] = "Natal";
+            word[851] = "São Luís";
+            word[852] = "Teresina";
+            word[853] = "Aracaju";
+
+            // sub-norte
+            word[854] = "Belém";
+            word[855] = "Macapá";
+            word[856] = "Manaus";
+            word[857] = "Boa Vista";
+            word[858] = "Porto Velho";
+            word[859] = "Rio Branco";
+            word[860] = "Palmas";
+
+            // sub-centro-oeste
+            word[861] = "Cuiabá";
+            word[862] = "Campo Grande";
+            word[863] = "Goiânia";
+            word[864] = "Brasília";
+
+            // capitais dos paises
+            //sub-america do sul
+            word[865] = "Brasília";
+            word[866] = "Montevidéu";
+            word[867] = "Buenos Aires";
+            word[868] = "La Paz";
+            word[869] = "Caiena";
+            word[870] = "Lima";
+            word[871] = "Santiago";
+            word[872] = "Caracas";
+
+            //sub-america do norte
+            word[873] = "Washington";
+            word[874] = "Ottawa";
+            word[875] = "Cidade do México";
+            word[876] = "Nuuk";
+
+            //sub-europa
+            word[877] = "Paris";
+            word[878] = "Quieve";
+            word[879] = "Berlim";
+            word[880] = "Madri";
+            word[881] = "Zagreb";
+            word[882] = "Atenas";
+            word[883] = "Praga";
+            word[884] = "Escópia";
+            word[885] = "Bucareste";
+            word[886] = "Lisboa";
+            word[887] = "Andorra-a-Velha";
+            word[888] = "Tirana";
+            word[889] = "Minsk";
+            word[890] = "Roma";
+            word[891] = "Vilnius";
+            word[892] = "Copenhague";
+            word[893] = "Helsinque";
+            word[894] = "Edimburgo";
+            word[895] = "Oslo";
+            word[896] = "Reykjavík";
+            word[897] = "Cardife";
+            word[898] = "Dublin";
+            word[899] = "Belfast";
+            word[900] = "Amsterdã";
+            word[901] = "Bruxelas";
+            word[902] = "Luxemburgo";
+            word[903] = "Berna";
+            word[904] = "Viena";
+            word[905] = "Varsóvia";
+            word[906] = "Budapeste";
+            word[907] = "Quixinau";
+            word[908] = "Vaduz";
+
+            //sub-ásia
+            word[909] = "Asgabate";
+            word[910] = "Nova Delhi";
+            word[911] = "Pequim";
+            word[912] = "Tóquio";
+            word[913] = "Erevã";
+            word[914] = "Ulã Bator";
+            word[915] = "Astana";
+            word[916] = "Daca";
+            word[917] = "Baku";
+            word[918] = "Catmandu";
+            word[919] = "Taipé";
+            word[920] = "Seul";
+            word[921] = "Pyongyang";
+            word[922] = "Hanói";
+            word[923] = "Nípo Dô";
+            word[924] = "Cabul";
+
+            //sub-oriente médio
+            word[925] = "Ancara";
+            word[926] = "Abu Dhabi";
+            word[927] = "Riade";
+            word[928] = "Doha";
+            word[929] = "Jerusalém";
+            word[930] = "Bagdá";
+            word[931] = "Damasco";
+
+            //sub-eurásia
+            word[932] = "Moscou";
+
+            //sub-áfrica
+            word[933] = "Pretória";
+            word[934] = "Cairo";
+            word[935] = "Gaborone";
+            word[936] = "Rabat";
+            word[937] = "Túnis";
+            word[938] = "Adis Abeba";
+            word[939] = "Nairóbi";
+            word[940] = "Harare";
+            word[941] = "Windhoek";
+            word[942] = "Maseru";
+            word[943] = "Maputo";
+            word[944] = "Brazzaville";
+            word[945] = "Kinshasa";
+            word[946] = "Libreville";
+            word[947] = "Abuja";
+            word[948] = "Iaundê";
+            word[949] = "N'Djamena";
+            word[950] = "Uagadugu";
+            word[951] = "Antananarivo";
+            word[952] = "Cartum";
+            word[953] = "Juba";
+
+            //sub-america central
+            word[954] = "Havana";
+            word[955] = "Kingston";
+            word[956] = "San José";
+            word[957] = "Cidade do Panamá";
+            word[958] = "Cidade da Guatemala";
+            word[959] = "Manágua";
+
+            //sub-oceania
+            word[960] = "Paliquir";
+            word[961] = "Camberra";
+            word[962] = "Porto Moresby";
+            word[963] = "Nuku'alofa";
+
+            //albuns de heavy metal
+            // Metallica
+            word[964] = "Kill 'Em All";
+            word[965] = "Ride the Lightning";
+            word[966] = "Master of Puppets";
+            word[967] = "...And Justice for All";
+            word[968] = "Metallica";
+            word[969] = "St. Anger";
+            word[970] = "Death Magnetic";
+            word[971] = "Hardwired... to Self-Destruct";
+            word[972] = "72 Seasons";
+
+            // Megadeth
+            word[973] = "Killing Is My Business... And Business Is Good!";
+            word[974] = "Peace Sells... But Who's Buying?";
+            word[975] = "So Far, So Good... So What!";
+            word[976] = "Rust in Peace";
+            word[977] = "Countdown to Extinction";
+            word[978] = "Youthanasia";
+            word[979] = "Cryptic Writings";
+            word[980] = "The World Needs a Hero";
+            word[981] = "The System Has Failed";
+            word[982] = "United Abominations";
+            word[983] = "Endgame";
+            word[984] = "Dystopia";
+            word[985] = "The Sick, The Dying, and The Dead!";
+
+            // System of a Down
+            word[986] = "System of a Down";
+            word[987] = "Toxicity";
+            word[988] = "Steal This Album!";
+            word[989] = "Mezmerize";
+            word[990] = "Hypnotize";
+
+            // Rammstein
+            word[991] = "Herzeleid";
+            word[992] = "Sehnsucht";
+            word[993] = "Mutter";
+            word[994] = "Reise, Reise";
+            word[995] = "Rosenrot";
+            word[996] = "Liebe ist für alle da";
+            word[997] = "Zeit";
+
+            // Pantera
+            word[998] = "Cowboys from Hell";
+            word[999] = "Vulgar Display of Power";
+
+            // Iron Maiden
+            word[1000] = "Iron Maiden";
+            word[1001] = "The Number of the Beast";
+            word[1002] = "Powerslave";
+            word[1003] = "Seventh Son of a Seventh Son";
+            word[1004] = "Fear of the Dark";
+            word[1005] = "Piece of Mind";
+            word[1006] = "Somewhere in Time";
+            word[1007] = "Killers";
+            word[1008] = "Brave New World";
+            word[1009] = "Senjutsu";
+
+            // Gojira
+            word[1010] = "Magma";
+            word[1011] = "From Mars to Sirius";
+            word[1012] = "Fortitude";
+            word[1013] = "L'Enfant Sauvage";
+            word[1014] = "The Link";
+            word[1015] = "Terra Incognita";
+            word[1016] = "The Way of All Flesh";
+
+            // Sepultura
+            word[1017] = "Roots";
+            word[1018] = "Chaos A.D.";
+            word[1019] = "Arise";
+
+            // Mayhem
+            word[1020] = "De Mysteriis Dom Sathanas";
+
+            // Cannibal Corpse
+            word[1021] = "Tomb of the Mutilated";
+
+            // Meshuggah
+            word[1022] = "ObZen";
+
+            // Slayer
+            word[1023] = "Reign in Blood";
+            word[1024] = "South of Heaven";
+            word[1025] = "Seasons in the Abyss";
+
+            // Black Sabbath
+            word[1026] = "Black Sabbath";
+            word[1027] = "Paranoid";
+            word[1028] = "Sabotage";
+            word[1029] = "Heaven and Hell";
+            word[1030] = "Sabbath Bloody Sabbath";
+            word[1031] = "Master of Reality";
+            word[1032] = "Vol. 4";
+
+            // Ozzy Osbourne
+            word[1033] = "Blizzard of Ozz";
+            word[1034] = "No More Tears";
+            word[1035] = "Patient Number 9";
+            word[1036] = "Diary of a Madman";
+            word[1037] = "Bark at the Moon";
+
+            // Judas Priest
+            word[1038] = "Painkiller";
+            word[1039] = "Turbo";
+            word[1040] = "Ram It Down";
+            word[1041] = "British Steel";
+
+            // Motorhead
+            word[1042] = "Ace of Spades";
+
+            // Anthrax
+            word[1043] = "Spreading the Disease";
+            word[1044] = "Among the Living";
+
+            // Death
+            word[1045] = "The Sound of Perseverance";
+            word[1046] = "Scream Bloody Gore";
+            word[1047] = "Spiritual Healing";
+
+            // Slipknot
+            word[1048] = "Iowa";
+            word[1049] = "Slipknot";
+            word[1050] = "All Hope Is Gone";
+
+            // Korn
+            word[1051] = "Korn";
+            word[1052] = "Follow the Leader";
+
+            // Dream Theater
+            word[1053] = "Images and Words";
+
+            // Dio
+            word[1054] = "Holy Diver";
+
+            // Mastodon
+            word[1055] = "Leviathan";
+
+            // Tool
+            word[1056] = "Lateralus";
+
+            // Helloween
+            word[1057] = "Keeper of the Seven Keys";
+
+            // Limp Bizkit
+            word[1058] = "Chocolate Starfish and the Hotdog Flavored Water";
+
+            // Disturbed
+            word[1059] = "The Sickness";
+
+            // Emigrate
+            word[1060] = "Emigrate";
+
+            // Rainbow
+            word[1061] = "Rising";
+
+            // Mercyful Fate
+            word[1062] = "Melissa";
+
+            // Rage Against the Machine
+            word[1063] = "Rage Against the Machine";
+
+            //series
+            //drama
+            word[1064] = "Game of Thrones";
+            word[1065] = "Stranger Things";
+            word[1066] = "Breaking Bad";
+            word[1067] = "Better Call Saul";
+            word[1068] = "Vikings";
+            word[1069] = "Narcos";
+            word[1070] = "Peaky Blinders";
+            word[1071] = "Orange is the New Black";
+            word[1072] = "Round 6";
+            word[1073] = "House of Cards";
+            word[1074] = "The Crown";
+            word[1075] = "Sex Education";
+            word[1076] = "This is Us";
+            word[1077] = "Chicago Fire";
+            word[1078] = "C.S.I.";
+            word[1079] = "A Casa do Dragão";
+            word[1080] = "Law & Order";
+            word[1081] = "The Last of Us";
+            word[1082] = "13 Reasons Why";
+            word[1083] = "Tulsa King";
+            word[1084] = "Bel-Air";
+            word[1085] = "Roma";
+            word[1086] = "24 Horas";
+            word[1087] = "Euphoria";
+            word[1088] = "Sons of Anarchy";
+            word[1089] = "Manifest";
+            word[1090] = "Lista Negra";
+            word[1091] = "Mad Men";
+            word[1092] = "Hannibal";
+            word[1093] = "NCIS";
+            word[1094] = "Gossip Girl";
+            word[1095] = "Prison Break";
+            word[1096] = "True Blood";
+
+            //misterio
+            word[1097] = "Lost";
+            word[1098] = "Lucifer";
+            word[1099] = "Dark";
+            word[1100] = "Arquivo X";
+            word[1101] = "Twin Peaks";
+            word[1102] = "Dexter";
+            word[1103] = "Supernatural";
+
+            //sitcom
+            word[1104] = "The Office";
+            word[1105] = "Brooklyn Nine-Nine";
+            word[1106] = "Seinfeld";
+            word[1107] = "Friends";
+            word[1108] = "How I Met Your Mother";
+            word[1109] = "The Big Bang Theory";
+            word[1110] = "iCarly";
+            word[1111] = "Eu, a Patroa e as Crianças";
+            word[1112] = "Kenan e Kel";
+            word[1113] = "Drake & Josh";
+            word[1114] = "Todo Mundo Odeia o Chris";
+            word[1115] = "Chaves";
+            word[1116] = "Um Maluco no Pedaço";
+            word[1117] = "Hannah Montana";
+
+            //terror
+            word[1118] = "The Walking Dead";
+            word[1119] = "American Horror Story";
+
+            //ação
+            word[1120] = "Cobra Kai";
+            word[1121] = "Obi-Wan Kenobi";
+            word[1122] = "O Livro de Boba Fett";
+            word[1123] = "The Umbrella Academy";
+            word[1124] = "S.W.A.T.";
+
+            //thriller
+            word[1125] = "La Casa de Papel";
+            word[1126] = "Dahmer";
+
+            //aventura
+            word[1127] = "Star Trek";
+            word[1128] = "Sandman";
+            word[1129] = "Andor";
+
+            //ficção cientifca
+            word[1130] = "The Twilight Zone";
+            word[1131] = "Black Mirror";
+            word[1132] = "Ruptura";
+            word[1133] = "Doctor Who";
+
+            //comedia
+            word[1134] = "Wandinha";
+            word[1135] = "Treta";
+            word[1136] = "O Chapolin Colorado";
+
+            //crime
+            word[1137] = "Mindhunter";
+            word[1138] = "Sherlock";
+
+            //guerra
+            word[1139] = "Band of Brothers";
+            word[1140] = "The Pacific";
+
+            //de epoca
+            word[1141] = "O Gambito da Rainha";
+            word[1142] = "Chernobyl";
+
+            //herois
+            word[1143] = "Loki";
+            word[1144] = "WandaVision";
+            word[1145] = "She-Hulk";
+            word[1146] = "Ms. Marvel";
+            word[1147] = "Cavaleiro da Lua";
+            word[1148] = "Gavião Arqueiro";
+            word[1149] = "Falcão e o Soldado Invernal";
+            word[1150] = "The Boys";
+            word[1151] = "O Pacificador";
+            word[1152] = "Titãs";
+            word[1153] = "Smallville";
+            word[1154] = "Demolidor";
+
+            //western espacial
+            word[1155] = "The Mandalorian";
+
+            //fantasia
+            word[1156] = "Cidade Invisível";
+            word[1157] = "The Witcher";
+
+            //medica
+            word[1158] = "Grey's Anatomy";
+            word[1159] = "The Good Doctor";
+            word[1160] = "New Amsterdam";
+            word[1161] = "Chicago Med";
+            word[1162] = "House";
+            word[1163] = "Plantão Médico";
+
+            //bandas de rock
+            //reino unido com a melhor musica da historia
+            word[1164] = "Queen";
+
+            //reino unido
+            word[1165] = "The Beatles";
+            word[1166] = "The Rolling Stones";
+            word[1167] = "Led Zeppelin";
+            word[1168] = "Deep Purple";
+            word[1169] = "Pink Floyd";
+            word[1170] = "The Who";
+            word[1171] = "The Police";
+            word[1172] = "Blur";
+            word[1173] = "Def Leppard";
+            word[1174] = "Radiohead";
+            word[1175] = "Eric Clapton";
+            word[1176] = "Coldplay";
+            word[1177] = "King Crimson";
+            word[1178] = "Arctic Monkeys";
+            word[1179] = "David Bowie";
+            word[1180] = "Sex Pistols";
+            word[1181] = "Muse";
+            word[1182] = "Dire Straits";
+            word[1183] = "Yes";
+            word[1184] = "The Smiths";
+            word[1185] = "The Cure";
+            word[1186] = "Oasis";
+            word[1187] = "John Lennon";
+            word[1188] = "Paul McCartney";
+            word[1189] = "The Clash";
+
+            //estados unidos
+            word[1190] = "Kiss";
+            word[1191] = "Van Halen";
+            word[1192] = "Twisted Sister";
+            word[1193] = "Foo Fighters";
+            word[1194] = "Motley Crüe";
+            word[1195] = "Nirvana";
+            word[1196] = "Guns N' Roses";
+            word[1197] = "Pearl Jam";
+            word[1198] = "Red Hot Chili Peppers";
+            word[1199] = "Jimi Hendrix";
+            word[1200] = "Janis Joplin";
+            word[1201] = "The White Stripes";
+            word[1202] = "Marilyn Manson";
+            word[1203] = "Aerosmith";
+            word[1204] = "Green Day";
+            word[1205] = "Alice in Chains";
+            word[1206] = "Lynyrd Skynyrd";
+            word[1207] = "Evanescence";
+            word[1208] = "Blink-182";
+            word[1209] = "My Chemical Romance";
+            word[1210] = "The Doors";
+            word[1211] = "Ramones";
+            word[1212] = "Bon Jovi";
+            word[1213] = "Soundgarden";
+            word[1214] = "Nine Inch Nails";
+            word[1215] = "Linkin Park";
+            word[1216] = "ZZ Top";
+            word[1217] = "Frank Zappa";
+            word[1218] = "Journey";
+            word[1219] = "Maroon 5";
+            word[1220] = "Imagine Dragons";
+            word[1221] = "Steely Dan";
+            word[1222] = "Greta Van Fleet";
+            word[1223] = "Eagles";
+            word[1224] = "Alter Bridge";
+            word[1225] = "R.E.M.";
+            word[1226] = "Chicago";
+            word[1227] = "Grateful Dead";
+            word[1228] = "Creedence Clearwater Revival";
+            word[1229] = "Twenty One Pilots";
+            word[1230] = "Stone Temple Pilots";
+            word[1231] = "The Offspring";
+            word[1232] = "Steve Vai";
+            word[1233] = "Misfits";
+            word[1234] = "Survivor";
+            word[1235] = "Primus";
+            word[1236] = "Bad Religion";
+            word[1237] = "Black Flag";
+            word[1238] = "Dead Kennedys";
+            word[1239] = "Rancid";
+            word[1240] = "Minor Threat";
+            word[1241] = "Descendents";
+            word[1242] = "NOFX";
+            word[1243] = "Jawbreaker";
+            word[1244] = "Social Distortion";
+
+            //australia
+            word[1245] = "AC/DC";
+
+            //irlanda
+            word[1246] = "U2";
+            word[1247] = "The Cranberries";
+
+            //canada
+            word[1248] = "Rush";
+            word[1249] = "Nickelback";
+            word[1250] = "Steppenwolf";
+            word[1251] = "Sum 41";
+
+            //italia
+            word[1252] = "Maneskin";
+
+            //alemanha
+            word[1253] = "Scorpions";
+
+            //brasil
+            word[1254] = "Rita Lee";
+            word[1255] = "Paralamas do Sucesso";
+            word[1256] = "Skank";
+            word[1257] = "Legião Urbana";
+            word[1258] = "Titãs";
+            word[1259] = "Raul Seixas";
+            word[1260] = "Freak Brotherz";
+            word[1261] = "Kiko Loureiro";
+            word[1262] = "Ratos de Porão";
+
+            //suecia
+            word[1263] = "Europe";
+
+            //profissões
+            //educação
+            word[1264] = "Professor";
+
+            //segurança e justiça
+            word[1265] = "Policial";
+            word[1266] = "Soldado";
+            word[1267] = "Advogado";
+            word[1268] = "Juiz";
+            word[1269] = "Marinheiro";
+
+            //saúde
+            word[1270] = "Médico";
+            word[1271] = "Psicólogo";
+            word[1272] = "Terapeuta";
+            word[1273] = "Cirurgião";
+            word[1274] = "Enfermeiro";
+            word[1275] = "Radiografista";
+            word[1276] = "Fisioterapeuta";
+            word[1277] = "Otorrinolaringologista";
+            word[1278] = "Oftalmologista";
+
+            //transporte
+            word[1279] = "Taxista";
+            word[1280] = "Motorista";
+            word[1281] = "Caminhoneiro";
+            word[1282] = "Piloto";
+
+            //construção e manutenção
+            word[1283] = "Eletricista";
+            word[1284] = "Madeireiro";
+            word[1285] = "Pedreiro";
+            word[1286] = "Encanador";
+            word[1287] = "Engenheiro";
+            word[1288] = "Soldador";
+            word[1289] = "Ferreiro";
+            word[1290] = "Carpinteiro";
+            word[1291] = "Zelador";
+            word[1292] = "Vidraceiro";
+
+            //agricultura e meio ambiente
+            word[1293] = "Lenhador";
+            word[1294] = "Agrônomo";
+            word[1295] = "Pescador";
+            word[1296] = "Biólogo";
+            word[1297] = "Fazendeiro";
+            word[1298] = "Veterinário";
+            word[1299] = "Seringueiro";
+            word[1300] = "Botânico";
+
+            //tecnologia
+            word[1301] = "Programador";
+            word[1302] = "Técnico de informática";
+
+            //esporte
+            word[1303] = "Tenista";
+            word[1304] = "Ginasta";
+            word[1305] = "Surfista";
+
+            //governo e política
+            word[1306] = "Vereador";
+            word[1307] = "Prefeito";
+            word[1308] = "Governador";
+            word[1309] = "Presidente";
+            word[1310] = "Deputado";
+            word[1311] = "Senador";
+            word[1312] = "Primeiro-ministro";
+            word[1313] = "Chanceler";
+            word[1314] = "Ministro";
+            word[1315] = "Secretário";
+
+            //religião
+            word[1316] = "Padre";
+            word[1317] = "Pastor";
+            word[1318] = "Rabino";
+            word[1319] = "Freira";
+
+            //negócios e finanças
+            word[1320] = "Empresário";
+            word[1321] = "Tesoureiro";
+            word[1322] = "CEO";
+            word[1323] = "Acionista";
+
+            //arte e entretenimento
+            word[1324] = "Cantor";
+            word[1325] = "Guitarrista";
+            word[1326] = "Baixista";
+            word[1327] = "Baterista";
+            word[1328] = "Pianista";
+            word[1329] = "Tecladista";
+            word[1330] = "Ator";
+            word[1331] = "Músico";
+            word[1332] = "Cartunista";
+            word[1333] = "Animador";
+            word[1334] = "Saxofonista";
+            word[1335] = "Jornalista";
+            word[1336] = "Escritor";
+            word[1337] = "Editor";
+            word[1338] = "Diretor";
+            word[1339] = "Sonoplasta";
+            word[1340] = "Apresentador";
+            word[1341] = "Radialista";
+            word[1342] = "Narrador";
+            word[1343] = "Cinegrafista";
+            word[1344] = "Streamer";
+
+            //comércio e serviços
+            word[1345] = "Barista";
+            word[1346] = "Prostituta";
+            word[1347] = "Cabeleireiro";
+            word[1348] = "Barbeiro";
+            word[1349] = "Alfaiate";
+            word[1350] = "Tatuador";
+            word[1351] = "Lojista";
+            word[1352] = "Florista";
+            word[1353] = "Mecânico";
+            word[1354] = "Cuteleiro";
+            word[1355] = "Couro";
+            word[1356] = "Porteiro";
+            word[1357] = "Luthier";
+            word[1358] = "Garçom";
+            word[1359] = "Padeiro";
+            word[1360] = "Cozinheiro";
+            word[1361] = "Açougueiro";
+            word[1362] = "Feirante";
+            word[1363] = "Entregador";
+
+            //elementos da tabela periodica
+            //metais
+            word[1364] = "Sódio";
+            word[1365] = "Alumínio";
+            word[1366] = "Prata";
+            word[1367] = "Titânio";
+            word[1368] = "Cobre";
+            word[1369] = "Estanho";
+            word[1370] = "Chumbo";
+            word[1371] = "Ouro";
+            word[1372] = "Platina";
+            word[1373] = "Bário";
+            word[1374] = "Bismuto";
+            word[1375] = "Ferro";
+            word[1376] = "Zinco";
+            word[1377] = "Vanádio";
+            word[1378] = "Lutécio";
+            word[1379] = "Paládio";
+            word[1380] = "Tungstênio";
+            word[1381] = "Gádolinio";
+            word[1382] = "Escândio";
+            word[1383] = "Lítio";
+            word[1384] = "Cálcio";
+            word[1385] = "Cromo";
+            word[1386] = "Manganês";
+            word[1387] = "Cobalto";
+            word[1388] = "Níquel";
+            word[1389] = "Gálio";
+            word[1390] = "Germânio";
+            word[1391] = "Criptônio";
+            word[1392] = "Rubídio";
+            word[1393] = "Estrôncio";
+            word[1394] = "Zircônio";
+            word[1395] = "Nióbio";
+            word[1396] = "Molibdênio";
+            word[1397] = "Ródio";
+            word[1398] = "Cádmio";
+            word[1399] = "Índio";
+            word[1400] = "Telúrio";
+            word[1401] = "Xenônio";
+            word[1402] = "Lantânio";
+            word[1403] = "Cério";
+            word[1404] = "Neodímio";
+            word[1405] = "Promécio";
+            word[1406] = "Samário";
+            word[1407] = "Európio";
+            word[1408] = "Térbio";
+            word[1409] = "Hólmio";
+            word[1410] = "Érbio";
+            word[1411] = "Túlio";
+            word[1412] = "Itérbio";
+            word[1413] = "Háfnio";
+            word[1414] = "Tântalo";
+            word[1415] = "Ósmio";
+            word[1416] = "Actínio";
+
+            //ametais
+            word[1417] = "Oxigênio";
+            word[1418] = "Hidrogênio";
+            word[1419] = "Carbono";
+            word[1420] = "Enxofre";
+            word[1421] = "Fósforo";
+            word[1422] = "Nitrogênio";
+            word[1423] = "Iodo";
+            word[1424] = "Polônio";
+            word[1425] = "Flúor";
+            word[1426] = "Cloro";
+            word[1427] = "Nitrogênio";
+            word[1428] = "Boro";
+            word[1429] = "Silício";
+            word[1430] = "Selênio";
+            word[1431] = "Antimônio";
+            word[1432] = "Arsênio";
+
+            //semimetais
+            word[1433] = "Hélio";
+            word[1434] = "Criptônio";
+
+            //gases nobres
+            word[1435] = "Hélio";
+            word[1436] = "Argônio";
+            word[1437] = "Néon";
+            word[1438] = "Criptônio";
+            word[1439] = "Xenônio";
+
+            //musicas do megadeth
+            // Rust in Peace
+            word[1440] = "Holy Wars... The Punishment Due";
+            word[1441] = "Hangar 18";
+            word[1442] = "Take No Prisoners";
+            word[1443] = "Poison Was the Cure";
+            word[1444] = "Five Magics";
+            word[1445] = "Tornado of Souls";
+            word[1446] = "Dawn Patrol";
+            word[1447] = "Rust in Peace... Polaris";
+
+            // Youthanasia
+            word[1448] = "Reckoning Day";
+            word[1449] = "Train of Consequences";
+            word[1450] = "The Killing Road";
+            word[1451] = "A Tout le Monde";
+            word[1452] = "Addicted to Chaos";
+            word[1453] = "Elysian Fields";
+            word[1454] = "Youthanasia";
+            word[1455] = "Blood of Heroes";
+            word[1456] = "Black Curtains";
+            word[1457] = "Victory";
+            word[1458] = "Family Tree";
+            word[1459] = "I Thought I Knew It All";
+
+            // Countdown to Extinction
+            word[1460] = "Symphony of Destruction";
+            word[1461] = "Sweating Bullets";
+            word[1462] = "High Speed Dirt";
+            word[1463] = "Captive Honour";
+            word[1464] = "Foreclosure of a Dream";
+            word[1465] = "Architecture of Aggression";
+            word[1466] = "Skin o' My Teeth";
+            word[1467] = "Ashes in Your Mouth";
+            word[1468] = "Psychotron";
+            word[1469] = "This Was My Life";
+
+            // Peace Sells... But Who's Buying?
+            word[1470] = "Peace Sells";
+            word[1471] = "Wake Up Dead";
+            word[1472] = "Good Mourning/Black Friday";
+            word[1473] = "My Last Words";
+            word[1474] = "Devil's Island";
+            word[1475] = "The Conjuring";
+            word[1476] = "Bad Omen";
+
+            // The World Needs a Hero
+            word[1477] = "A Dread and a Fugitive Mind";
+            word[1478] = "Return to Hangar";
+            word[1479] = "1,000 Times Goodbye";
+            word[1480] = "When";
+            word[1481] = "Recipe for Hate... Warhorse";
+            word[1482] = "Moto Psycho";
+            word[1483] = "The World Needs a Hero";
+            word[1484] = "I'm Losing My Senses";
+            word[1485] = "Silent Scorn";
+            word[1486] = "Promises";
+            word[1487] = "Burning Bridges";
+            word[1488] = "Disconnect";
+
+            // Cryptic Writings
+            word[1489] = "She-Wolf";
+            word[1490] = "Trust";
+            word[1491] = "A Secret Place";
+            word[1492] = "The Disintegrators";
+            word[1493] = "Vortex";
+            word[1494] = "Almost Honest";
+            word[1495] = "Have Cool, Will Travel";
+            word[1496] = "Mastermind";
+            word[1497] = "I'll Get Even";
+            word[1498] = "Sin";
+            word[1499] = "FFF";
+
+            // Dystopia
+            word[1500] = "Conquer or Die!";
+            word[1501] = "Dystopia";
+            word[1502] = "Post-American World";
+            word[1503] = "The Threat Is Real";
+            word[1504] = "Poisonous Shadows";
+            word[1505] = "Fatal Illusion";
+            word[1506] = "Death from Within";
+            word[1507] = "Bullet to the Brain";
+            word[1508] = "The Emperor";
+            word[1509] = "Lying in State";
+
+            // United Abominations
+            word[1510] = "Sleepwalker";
+            word[1511] = "Never Walk Alone... A Call to Arms";
+            word[1512] = "Washington Is Next!";
+            word[1513] = "United Abominations";
+            word[1514] = "Play for Blood";
+            word[1515] = "Amerikhastan";
+            word[1516] = "Gears of War";
+            word[1517] = "Blessed Be the Dead";
+            word[1518] = "You're Dead";
+            word[1519] = "Burnt Ice";
+
+            // Killing Is My Business... And Business Is Good!
+            word[1520] = "Mechanix";
+            word[1521] = "Last Rites/Loved to Death";
+            word[1522] = "Killing Is My Business... And Business Is Good!";
+            word[1523] = "The Skull Beneath the Skin";
+            word[1524] = "Rattlehead";
+            word[1525] = "Chosen Ones";
+            word[1526] = "Looking Down the Cross";
+
+            // So Far, So Good... So What!
+            word[1527] = "In My Darkest Hour";
+            word[1528] = "Hook in Mouth";
+            word[1529] = "Into the Lungs of Hell";
+            word[1530] = "Set the World Afire";
+            word[1531] = "Mary Jane";
+            word[1532] = "502";
+            word[1533] = "Liar";
+
+            // Hidden Treasures
+            word[1534] = "Angry Again";
+            word[1535] = "99 Ways to Die";
+            word[1536] = "Breakpoint";
+            word[1537] = "Go to Hell";
+            word[1538] = "Diadems";
+
+            // Risk
+            word[1539] = "Prince of Darkness";
+            word[1540] = "Crush 'Em";
+            word[1541] = "I'll Be There";
+            word[1542] = "Breadline";
+            word[1543] = "Time: The Beginning";
+            word[1544] = "Time: The End";
+            word[1545] = "The Doctor Is Calling";
+            word[1546] = "Enter the Arena";
+            word[1547] = "Insomnia";
+            word[1548] = "Wanderlust";
+            word[1549] = "Ecstasy";
+            word[1550] = "Seven";
+
+            // The System Has Failed
+            word[1551] = "Blackmail the Universe";
+            word[1552] = "Kick the Chair";
+            word[1553] = "Tears in a Vial";
+            word[1554] = "Back in the Day";
+            word[1555] = "Truth Be Told";
+            word[1556] = "Die Dead Enough";
+            word[1557] = "The Scorpion";
+            word[1558] = "I Know Jack";
+            word[1559] = "Something That I'm Not";
+            word[1560] = "Of Mice and Men";
+            word[1561] = "Shadow of Death";
+            word[1562] = "My Kingdom";
+
+            // Endgame
+            word[1563] = "Dialectic Chaos";
+            word[1564] = "This Day We Fight!";
+            word[1565] = "Head Crusher";
+            word[1566] = "The Right to Go Insane";
+            word[1567] = "Bodies";
+            word[1568] = "Bite the Hand";
+            word[1569] = "44 Minutes";
+            word[1570] = "1,320";
+            word[1571] = "Endgame";
+            word[1572] = "The Hardest Part of Letting Go... Sealed With a Kiss";
+            word[1573] = "How the Story Ends";
+
+            // Thirteen
+            word[1574] = "Sudden Death";
+            word[1575] = "Public Enemy No. 1";
+            word[1576] = "Whose Life (Is It Anyways?)";
+            word[1577] = "We the People";
+            word[1578] = "Guns, Drugs & Money";
+            word[1579] = "Never Dead";
+            word[1580] = "New World Order";
+            word[1581] = "Fast Lane";
+            word[1582] = "Black Swan";
+            word[1583] = "Wrecker";
+            word[1584] = "Millennium of the Blind";
+            word[1585] = "Deadly Nightshade";
+            word[1586] = "13";
+
+            // Super Collider
+            word[1587] = "Kingmaker";
+            word[1588] = "Super Collider";
+            word[1589] = "Burn!";
+            word[1590] = "Built for War";
+            word[1591] = "Off the Edge";
+            word[1592] = "Dance in the Rain";
+            word[1593] = "Beginning of Sorrow";
+            word[1594] = "The Blackest Crow";
+            word[1595] = "Forget to Remember";
+            word[1596] = "Don't Turn Your Back...";
+
+            // The Sick, the Dying... and the Dead!
+            word[1597] = "The Sick, the Dying... and the Dead!";
+            word[1598] = "Life in Hell";
+            word[1599] = "Night Stalkers";
+            word[1600] = "Dogs of Chernobyl";
+            word[1601] = "Sacrifice";
+            word[1602] = "Junkie";
+            word[1603] = "Psychopathy";
+            word[1604] = "Killing Time";
+            word[1605] = "Soldier On!";
+            word[1606] = "Célebutante";
+            word[1607] = "Mission to Mars";
+            word[1608] = "We'll Be Back";
+
+            // Countdown to Extinction (Expanded)
+            word[1609] = "Crown of Worms";
+
+            // Risk (Japan Bonus Track)
+            word[1605] = "Duke Nukem Theme";
+
+            // Capitol Punishment: The Megadeth Years
+            word[1610] = "Kill the King";
+
+            // The World Needs a Hero (Japan Bonus Track)
+            word[1611] = "Coming Home";
+
+            //rust in peace expanded
+            word[1612] = "My Creation";
+
+            //musicas do metallica
+            // Kill 'Em All
+            word[1613] = "Hit the Lights";
+            word[1614] = "The Four Horsemen";
+            word[1615] = "Seek & Destroy";
+            word[1616] = "Whiplash";
+            word[1617] = "Phantom Lord";
+            word[1618] = "Jump in the Fire";
+            word[1619] = "Motorbreath";
+
+            // Ride the Lightning
+            word[1620] = "Fight Fire with Fire";
+            word[1621] = "Ride the Lightning";
+            word[1622] = "For Whom the Bell Tolls";
+            word[1623] = "Fade to Black";
+            word[1624] = "Escape";
+            word[1625] = "Trapped Under Ice";
+            word[1626] = "Creeping Death";
+            word[1627] = "The Call of Ktulu";
+
+            // Master of Puppets
+            word[1628] = "Battery";
+            word[1629] = "Master of Puppets";
+            word[1630] = "The Thing That Should Not Be";
+            word[1631] = "Welcome Home (Sanitarium)";
+            word[1632] = "Disposable Heroes";
+            word[1633] = "Leper Messiah";
+            word[1634] = "Orion";
+            word[1635] = "Damage, Inc.";
+
+            // ...And Justice for All
+            word[1636] = "Blackened";
+            word[1637] = "...And Justice for All";
+            word[1638] = "Eye of the Beholder";
+            word[1639] = "One";
+            word[1640] = "Harvester of Sorrow";
+            word[1641] = "The Shortest Straw";
+            word[1642] = "The Frayed Ends of Sanity";
+            word[1643] = "To Live Is to Die";
+            word[1644] = "Dyers Eve";
+
+            // The Black Album
+            word[1645] = "Enter Sandman";
+            word[1646] = "Sad but True";
+            word[1647] = "Holier Than Thou";
+            word[1648] = "The Unforgiven";
+            word[1649] = "Wherever I May Roam";
+            word[1650] = "Don't Tread on Me";
+            word[1651] = "Through the Never";
+            word[1652] = "Nothing Else Matters";
+            word[1653] = "Of Wolf and Man";
+            word[1654] = "The God That Failed";
+            word[1655] = "My Friend of Misery";
+            word[1656] = "The Struggle Within";
+
+            // Load
+            word[1657] = "Ain't My Bitch";
+            word[1658] = "2 x 4";
+            word[1659] = "The House Jack Built";
+            word[1660] = "Until It Sleeps";
+            word[1661] = "King Nothing";
+            word[1662] = "Hero of the Day";
+            word[1663] = "Bleeding Me";
+            word[1664] = "Cure";
+            word[1665] = "Poor Twisted Me";
+            word[1666] = "Wasting My Hate";
+            word[1667] = "Mama Said";
+            word[1668] = "Thorn Within";
+            word[1669] = "Ronnie";
+            word[1670] = "The Outlaw Torn";
+
+            // Reload
+            word[1671] = "Fuel";
+            word[1672] = "The Memory Remains";
+            word[1673] = "Devil's Dance";
+            word[1674] = "Unforgiven II";
+            word[1675] = "Better than You";
+            word[1676] = "Slither";
+            word[1677] = "Carpe Diem Baby";
+            word[1678] = "Bad Seed";
+            word[1679] = "Where the Wild Things Are";
+            word[1680] = "Prince Charming";
+            word[1681] = "Low Man's Lyric";
+            word[1682] = "Attitude";
+            word[1683] = "Fixxxer";
+
+            // St. Anger
+            word[1684] = "Frantic";
+            word[1685] = "St. Anger";
+            word[1686] = "Some Kind of Monster";
+            word[1687] = "Dirty Window";
+            word[1689] = "Invisible Kid";
+            word[1690] = "My World";
+            word[1691] = "Shoot Me Again";
+            word[1692] = "Sweet Amber";
+            word[1693] = "The Unnamed Feeling";
+            word[1694] = "Purify";
+            word[1695] = "All Within My Hands";
+
+            // Death Magnetic
+            word[1696] = "That Was Just Your Life";
+            word[1697] = "The End of the Line";
+            word[1698] = "Broken, Beat & Scarred";
+            word[1699] = "The Day That Never Comes";
+            word[1700] = "All Nightmare Long";
+            word[1701] = "Cyanide";
+            word[1702] = "The Unforgiven III";
+            word[1703] = "The Judas Kiss";
+            word[1704] = "Suicide & Redemption";
+            word[1705] = "My Apocalypse";
+
+            // Hardwired... to Self-Destruct
+            word[1706] = "Hardwired";
+            word[1707] = "Atlas, Rise!";
+            word[1708] = "Now That We're Dead";
+            word[1709] = "Moth into Flame";
+            word[1710] = "Dream No More";
+            word[1711] = "Halo on Fire";
+            word[1712] = "Confusion";
+            word[1713] = "ManUNkind";
+            word[1714] = "Here Comes Revenge";
+            word[1715] = "Am I Savage?";
+            word[1716] = "Murder One";
+            word[1717] = "Spit Out the Bone";
+
+            // s&m
+            word[1718] = "No Leaf Clover";
+            word[1719] = "Minus Human";
+
+            // Lulu
+            word[1720] = "Brandenburg Gate";
+            word[1721] = "The View";
+            word[1722] = "Pumping Blood";
+            word[1724] = "Mistress Dread";
+            word[1725] = "Iced Honey";
+            word[1726] = "Cheat on Me";
+            word[1727] = "Frustration";
+            word[1728] = "Little Dog";
+            word[1729] = "Dragon";
+            word[1730] = "Junior Dad";
+
+            // Beyond Magnetic
+            word[1731] = "Hate Train";
+            word[1732] = "Just a Bullet Away";
+            word[1733] = "Hell and Back";
+            word[1734] = "Rebel of Babylon";
+
+            // i desappear
+            word[1735] = "I Disappear";
+
+            //hardwired deluxe
+            word[1736] = "Lords of Summer";
+
+            //musicas do soad
+            // System of a Down
+            word[1737] = "Suite-Pee";
+            word[1738] = "Know";
+            word[1739] = "Suggestions";
+            word[1740] = "DDevil";
+            word[1741] = "Mind";
+            word[1742] = "Spiders";
+            word[1743] = "Peephole";
+            word[1744] = "Sugar";
+            word[1745] = "War?";
+            word[1746] = "Soil";
+            word[1747] = "CUBert";
+            word[1748] = "Darts";
+            word[1749] = "P.L.U.C.K.";
+
+            // Toxicity
+            word[1750] = "Prison Song";
+            word[1751] = "Needles";
+            word[1752] = "Toxicity";
+            word[1753] = "Chop Suey!";
+            word[1754] = "Aerials";
+            word[1755] = "ATWA";
+            word[1756] = "Arto";
+            word[1757] = "Bounce";
+            word[1758] = "Deer Dance";
+            word[1759] = "Jet Pilot";
+            word[1760] = "Psycho";
+            word[1761] = "Shimmy";
+            word[1762] = "Science";
+            word[1763] = "Forest";
+            word[1764] = "X";
+
+            // Steal This Album!
+            word[1765] = "Chic 'N' Stu";
+            word[1766] = "Innervision";
+            word[1767] = "Pictures";
+            word[1768] = "Boom!";
+            word[1769] = "Streamline";
+            word[1770] = "Highway Song";
+            word[1771] = "36";
+            word[1772] = "Fuck the System";
+            word[1773] = "Ego Brain";
+            word[1774] = "Mr. Jack";
+            word[1775] = "Thetawaves";
+            word[1776] = "Roulette";
+            word[1777] = "Bubbles";
+            word[1778] = "Nüguns";
+            word[1779] = "A.D.D.";
+            word[1780] = "I-E-A-I-A-I-O";
+
+            // Mezmerize
+            word[1781] = "Soldier Side - Intro";
+            word[1782] = "B.Y.O.B.";
+            word[1783] = "Revenga";
+            word[1784] = "Cigaro";
+            word[1785] = "Radio/Video";
+            word[1786] = "This Cocaine Makes Me Feel Like I'm on This Song";
+            word[1787] = "Violent Pornography";
+            word[1788] = "Question!";
+            word[1789] = "Sad Statue";
+            word[1790] = "Old School Hollywood";
+            word[1791] = "Lost in Hollywood";
+
+            // Hypnotize
+            word[1792] = "Attack";
+            word[1793] = "Dreaming";
+            word[1794] = "Kill Rock 'n Roll";
+            word[1795] = "Hypnotize";
+            word[1796] = "Stealing Society";
+            word[1797] = "Tentative";
+            word[1798] = "Holy Mountains";
+            word[1799] = "U-Fig";
+            word[1800] = "Lonely Day";
+            word[1801] = "Vicinity of Obscenity";
+            word[1802] = "She's Like Heroin";
+            word[1803] = "Lonely Day";
+
+            // Protect the Land/Genocidal Humanoidz
+            word[1804] = "Protect the Land";
+            word[1805] = "Genocidal Humanoidz";
+
+            // Vicinity of Obscenity/Lonely Day
+            word[1806] = "Shame";
+
+            // Chop Suey!
+            word[1807] = "Johnny";
+
+            // Toxicity Single
+            word[1808] = "Marmalade";
+            word[1809] = "Metro";
+
+            //musicas do rammstein
+            // Herzeleid
+            word[1810] = "Wollt ihr das Bett in Flammen sehen?";
+            word[1811] = "Du riechst so gut";
+            word[1812] = "Herzeleid";
+            word[1813] = "Seemann";
+            word[1814] = "Heirate mich";
+            word[1815] = "Weisses Fleisch";
+            word[1816] = "Der Meister";
+            word[1817] = "Das alte Leid";
+            word[1818] = "Laichzeit";
+            word[1819] = "Rammstein";
+            word[1820] = "Asche zu Asche";
+
+            // Sehnsucht
+            word[1821] = "Du hast";
+            word[1822] = "Engel";
+            word[1823] = "Küss mich (Fellfrosch)";
+            word[1824] = "Bück dich";
+            word[1825] = "Alter Mann";
+            word[1826] = "Sehnsucht";
+            word[1827] = "Bestrafe mich";
+            word[1828] = "Spiel mit mir";
+            word[1829] = "Tier";
+            word[1830] = "Klavier";
+            word[1831] = "Eifersucht";
+
+            // Mutter
+            word[1832] = "Mutter";
+            word[1833] = "Sonne";
+            word[1834] = "Ich will";
+            word[1835] = "Feuer frei!";
+            word[1836] = "Links 2 3 4";
+            word[1837] = "Mein Herz brennt";
+            word[1838] = "Adios";
+            word[1839] = "Nebel";
+            word[1840] = "Rein raus";
+            word[1841] = "Spieluhr";
+            word[1842] = "Zwitter";
+
+            // Reise, Reise
+            word[1843] = "Reise, Reise";
+            word[1844] = "Mein Teil";
+            word[1845] = "Keine Lust";
+            word[1846] = "Ohne dich";
+            word[1847] = "Dalai Lama";
+            word[1848] = "Morgenstern";
+            word[1849] = "Stein um Stein";
+            word[1850] = "Amour";
+            word[1851] = "Moskau";
+            word[1852] = "Amerika";
+            word[1853] = "Los";
+
+            // Rosenrot
+            word[1854] = "Rosenrot";
+            word[1855] = "Benzin";
+            word[1856] = "Mann gegen Mann";
+            word[1857] = "Feuer und Wasser";
+            word[1858] = "Spring";
+            word[1859] = "Te quiero puta!";
+            word[1860] = "Zerstören";
+            word[1861] = "Wo bist du";
+            word[1862] = "Hilf mir";
+            word[1863] = "Ein Lied";
+            word[1864] = "Stirb nicht vor mir (Don’t die before I do)";
+
+            // Liebe ist für alle da
+            word[1865] = "Rammlied";
+            word[1866] = "Ich tu dir weh";
+            word[1867] = "Haifisch";
+            word[1868] = "Bückstabü";
+            word[1869] = "Waidmanns Heil";
+            word[1870] = "Pussy";
+            word[1871] = "Liebe ist für alle da";
+            word[1872] = "Wiener Blut";
+            word[1873] = "Frühling in Paris";
+            word[1874] = "Roter Sand";
+            word[1875] = "Mehr";
+
+            // Album sem nome
+            word[1876] = "Deutschland";
+            word[1877] = "Radio";
+            word[1878] = "Weit weg";
+            word[1879] = "Tattoo";
+            word[1880] = "Sex";
+            word[1881] = "Diamant";
+            word[1882] = "Puppe";
+            word[1883] = "Was ich liebe";
+            word[1884] = "Hallomann";
+            word[1885] = "Ausländer";
+            word[1886] = "Zeig dich";
+
+            // Zeit
+            word[1887] = "Zeit";
+            word[1888] = "Dicke Titten";
+            word[1889] = "Angst";
+            word[1890] = "Zick Zack";
+            word[1891] = "Meine Tränen";
+            word[1892] = "Adieu";
+            word[1893] = "Armee der Tristen";
+            word[1894] = "Schwarz";
+            word[1895] = "Giftig";
+            word[1896] = "OK";
+            word[1897] = "Lügen";
+
+            // Made in Germany
+            word[1898] = "Mein Land";
+
+            // Raritäten
+            word[1899] = "Das Modell";
+            word[1900] = "Kokain";
+            word[1901] = "Halleluja";
+            word[1902] = "Gib mir deine Augen";
+            word[1903] = "Fergie unds nicht";
+            word[1904] = "5/4";
+
+            // LIFAD Special Edition
+            word[1905] = "Führe mich";
+            word[1906] = "Donaukinder";
+            word[1907] = "Halt";
+            word[1908] = "Liese";
+
             // sorteio da palavra
             Random ran = new Random();
 
@@ -1256,13 +2694,13 @@ public class JogoDaForca {
 
                     dica = "É um vegetal";
 
-                } else if (seletor >= 67 && seletor <= 85) {
+                } else if (seletor >= 67 && seletor <= 83) {
 
                     dica = "É uma erva";
 
-                } else if (seletor >= 86 && seletor <= 92) {
+                } else if (seletor >= 84 && seletor <= 92) {
 
-                    dica = "É uma noz ou cemente";
+                    dica = "É uma noz, cemente ou especiaria";
 
                 } else if (seletor >= 93 && seletor <= 98) {
 
@@ -1780,6 +3218,642 @@ public class JogoDaForca {
                     dica = "É um jogo shoot 'em up";
 
                 }
+            } else if (seletor >= 865 && seletor <= 963) {
+
+                tema = "Capitais dos Paises";
+
+                if (seletor >= 865 && seletor <= 872) {
+
+                    dica = "É a capital de um país da América do Sul";
+
+                } else if (seletor >= 873 && seletor <= 876) {
+
+                    dica = "É a capital de um país da América do Norte";
+
+                } else if (seletor >= 877 && seletor <= 908) {
+
+                    dica = "É a capital de um país da Europa";
+
+                } else if (seletor >= 909 && seletor <= 924) {
+
+                    dica = "É a capital de um país da Ásia";
+
+                } else if (seletor >= 925 && seletor <= 931) {
+
+                    dica = "É a capital de um país do Oriente Médio";
+
+                } else if (seletor == 932) {
+
+                    dica = "É a capital de um país da Eurasia";
+
+                } else if (seletor >= 933 && seletor <= 953) {
+
+                    dica = "É a capital de um país da África";
+
+                } else if (seletor >= 954 && seletor <= 959) {
+
+                    dica = "É a capital de um país da América Central";
+
+                } else if (seletor >= 960 && seletor <= 963) {
+
+                    dica = "É a capital de um país da Oceania";
+
+                }
+            } else if (seletor >= 838 && seletor <= 864) {
+
+                tema = "Capitais dos estados do Brasil";
+
+                if (seletor >= 838 && seletor <= 840) {
+
+                    dica = "É a capital de um estado da região sul";
+
+                } else if (seletor >= 841 && seletor <= 844) {
+
+                    dica = "É a cpital de um estado da região sudeste";
+
+                } else if (seletor >= 845 && seletor <= 853) {
+
+                    dica = "É a capital de um estado da região nordeste";
+
+                } else if (seletor >= 854 && seletor <= 860) {
+
+                    dica = "É a capital de um estado da região norte";
+
+                } else if (seletor >= 861 && seletor <= 864) {
+
+                    dica = "É a capital de um estado da região centro-oeste";
+                }
+
+            } else if (seletor >= 964 && seletor <= 1063) {
+
+                tema = "Albuns de Heavy Metal";
+
+                if (seletor >= 964 && seletor <= 972) {
+
+                    dica = "É um album do Metallica";
+
+                } else if (seletor >= 973 && seletor <= 985) {
+
+                    dica = "É um album do Megadeth";
+
+                } else if (seletor >= 986 && seletor <= 990) {
+
+                    dica = "É um album do System of a Down";
+
+                } else if (seletor >= 991 && seletor <= 997) {
+
+                    dica = "É um album do Rammstein";
+
+                } else if (seletor >= 998 && seletor <= 999) {
+
+                    dica = "É um album do Pantera";
+
+                } else if (seletor >= 1000 && seletor <= 1009) {
+
+                    dica = "É um album do Iron Maiden";
+
+                } else if (seletor >= 1010 && seletor <= 1016) {
+
+                    dica = "É um album do Gojira";
+
+                } else if (seletor >= 1017 && seletor <= 1019) {
+
+                    dica = "É uma album do Sepultura";
+
+                } else if (seletor == 1020) {
+
+                    dica = "É um album do Mayhem";
+
+                } else if (seletor == 1021) {
+
+                    dica = "É um album do Cannibal Corpse";
+
+                } else if (seletor == 1022) {
+
+                    dica = "É um album do Meshuggah";
+
+                } else if (seletor >= 1023 && seletor <= 1025) {
+
+                    dica = "É um album do Slayer";
+
+                } else if (seletor >= 1026 && seletor <= 1032) {
+
+                    dica = "É um album do Black Sabbath";
+
+                } else if (seletor >= 1033 && seletor <= 1037) {
+
+                    dica = "É um album do Ozzy Osbourne";
+
+                } else if (seletor >= 1038 && seletor <= 1041) {
+
+                    dica = "É um album do Judas Priest";
+
+                } else if (seletor == 1042) {
+
+                    dica = "É um album do Motörhead";
+
+                } else if (seletor >= 1043 && seletor <= 1044) {
+
+                    dica = "É um album do Anthrax";
+
+                } else if (seletor >= 1045 && seletor <= 1047) {
+
+                    dica = "É um album do Death";
+
+                } else if (seletor >= 1048 && seletor <= 1050) {
+
+                    dica = "É um album do Slipknot";
+
+                } else if (seletor >= 1051 && seletor <= 1052) {
+
+                    dica = "É um album do Korn";
+
+                } else if (seletor == 1053) {
+
+                    dica = "É um album do Dream Theater";
+
+                } else if (seletor == 1054) {
+
+                    dica = "É um album do Dio";
+
+                } else if (seletor == 1055) {
+
+                    dica = "É um album do Mastodon";
+
+                } else if (seletor == 1056) {
+
+                    dica = "É um album do Tool";
+
+                } else if (seletor == 1057) {
+
+                    dica = "É um album do Helloween";
+
+                } else if (seletor == 1058) {
+
+                    dica = "É um album do Limp Bizkit";
+
+                } else if (seletor == 1059) {
+
+                    dica = "É um album do Disturbed";
+
+                } else if (seletor == 1060) {
+
+                    dica = "É um album do Emigrate";
+
+                } else if (seletor == 1061) {
+
+                    dica = "É um album do Rainbow";
+
+                } else if (seletor == 1062) {
+
+                    dica = "É um album do Mercyful Fate";
+
+                } else if (seletor == 1063) {
+
+                    dica = "É um album do Rage Against the Machine";
+
+                }
+
+            } else if (seletor >= 1064 && seletor <= 1163) {
+
+                tema = "Series";
+
+                if (seletor >= 1064 && seletor <= 1096) {
+
+                    dica = "É uma serie de drama";
+
+                } else if (seletor >= 1097 && seletor <= 1103) {
+
+                    dica = "É uma serie de mistério";
+
+                } else if (seletor >= 1104 && seletor <= 1117) {
+
+                    dica = "É uma series de sitcom";
+
+                } else if (seletor >= 1118 && seletor <= 1119) {
+
+                    dica = "É uma serie de terror";
+
+                } else if (seletor >= 1120 && seletor <= 1124) {
+
+                    dica = "É uma serie de ação";
+
+                } else if (seletor >= 1125 && seletor <= 1126) {
+
+                    dica = "É uma serie thriller";
+
+                } else if (seletor >= 1127 && seletor <= 1129) {
+
+                    dica = "É uma serie de aventura";
+
+                } else if (seletor >= 1130 && seletor <= 1133) {
+
+                    dica = "É uma serie de ficção científica";
+
+                } else if (seletor >= 1134 && seletor <= 1136) {
+
+                    dica = "É uma serie de comédia";
+
+                } else if (seletor >= 1137 && seletor <= 1138) {
+
+                    dica = "É uma serie de crime";
+
+                } else if (seletor >= 1139 && seletor <= 1140) {
+
+                    dica = "É uma serie de guerra";
+
+                } else if (seletor >= 1141 && seletor <= 1142) {
+
+                    dica = "É uma serie de época";
+
+                } else if (seletor >= 1143 && seletor <= 1154) {
+
+                    dica = "É uma serie de Heroi";
+
+                } else if (seletor == 1155) {
+
+                    dica = "É uma serie de western espacial";
+
+                } else if (seletor >= 1156 && seletor <= 1157) {
+
+                    dica = "É uma serie de fantasia";
+
+                } else if (seletor >= 1158 && seletor <= 1163) {
+
+                    dica = "É uma serie médica";
+
+                }
+
+            } else if (seletor >= 1164 && seletor <= 1263) {
+
+                tema = "Bandas e artistas de Rock";
+
+                if (seletor == 1164) {
+
+                    dica = "É uma banda do Reino Unido que fez a melhor musica da historia";
+
+                } else if (seletor >= 1165 && seletor <= 1189) {
+
+                    dica = "É uma banda/artista do Reino Unido";
+
+                } else if (seletor >= 1190 && seletor <= 1244) {
+
+                    dica = "É uma banda/artista dos Estados Unidos";
+
+                } else if (seletor == 1245) {
+
+                    dica = "É uma banda/artista da Austrália";
+
+                } else if (seletor >= 1246 && seletor <= 1247) {
+
+                    dica = "É uma banda/artista da Irlanda";
+
+                } else if (seletor >= 1248 && seletor <= 1251) {
+
+                    dica = "É uma banda/artista do Canadá";
+
+                } else if (seletor == 1252) {
+
+                    dica = "É uma banda/artista da Italia";
+
+                } else if (seletor == 1253) {
+
+                    dica = "É uma banda/artista da Alemanha";
+
+                } else if (seletor >= 1254 && seletor <= 1262) {
+
+                    dica = "É uma banda/artista do Brasil";
+
+                } else if (seletor == 1263) {
+
+                    dica = "É uma banda/artista da Suécia";
+
+                }
+
+            } else if (seletor >= 1264 && seletor <= 1363) {
+
+                tema = "Profissões";
+
+                if (seletor == 1264) {
+
+                    dica = "É uma profissão da área da educação";
+
+                } else if (seletor >= 1265 && seletor <= 1269) {
+
+                    dica = "É uma profissão da área de segurança e/ou justiça";
+
+                } else if (seletor >= 1270 && seletor <= 1278) {
+
+                    dica = "É uma profissão da área da saúde";
+
+                } else if (seletor >= 1279 && seletor <= 1282) {
+
+                    dica = "É uma profissão da área dos transportes";
+
+                } else if (seletor >= 1283 && seletor <= 1292) {
+
+                    dica = "É uma profissão da área da construção e/ou manutenção";
+
+                } else if (seletor >= 1293 && seletor <= 1300) {
+
+                    dica = "É uma profissão da área da agricultura e/ou meio-ambiente";
+
+                } else if (seletor >= 1301 && seletor <= 1302) {
+
+                    dica = "É uma profissão da área da tecnologia";
+
+                } else if (seletor >= 1303 && seletor <= 1305) {
+
+                    dica = "É uma profissão da área do esporte";
+
+                } else if (seletor >= 1306 && seletor <= 1315) {
+
+                    dica = "É uma profissão da área de governo e/ou política";
+
+                } else if (seletor >= 1316 && seletor <= 1319) {
+
+                    dica = "É uma profissão da área da religião";
+
+                } else if (seletor >= 1320 && seletor <= 1323) {
+
+                    dica = "É uma profissão da área dos negócios e/ou finanças";
+
+                } else if (seletor >= 1324 && seletor <= 1344) {
+
+                    dica = "É uma profissão da área da arte e/ou entretenimento";
+
+                } else if (seletor >= 1345 && seletor <= 1363) {
+
+                    dica = "É uma profissão da área do comércio e/ou serviços";
+
+                }
+
+            } else if (seletor >= 1364 && seletor <= 1439) {
+
+                tema = "Elementos da Tabela Periódica";
+
+                if (seletor >= 1364 && seletor <= 1416) {
+
+                    dica = "É um metal";
+
+                } else if (seletor >= 1417 && seletor <= 1432) {
+
+                    dica = "É um ametal";
+
+                } else if (seletor >= 1433 && seletor <= 1434) {
+
+                    dica = "É um semimetal";
+
+                } else if (seletor >= 1435 && seletor <= 1439) {
+
+                    dica = "É um gas nobre";
+
+                }
+
+            } else if (seletor >= 1440 && seletor <= 1612) {
+
+                tema = "Musicas do Megadeth";
+
+                if (seletor >= 1440 && seletor <= 1447) {
+
+                    dica = "É uma musica do Rust In Peace";
+
+                } else if (seletor >= 1448 && seletor <= 1459) {
+
+                    dica = "É uma musica do Youthanasia";
+
+                } else if (seletor >= 1460 && seletor <= 1469) {
+
+                    dica = "É uma musica do Countdown To Extiction";
+
+                } else if (seletor >= 1470 && seletor <= 1476) {
+
+                    dica = "É uma musica do Peace Sells... But Who's Buying?";
+
+                } else if (seletor >= 1477 && seletor <= 1488) {
+
+                    dica = "É uma musica do The World Needs a Hero";
+
+                } else if (seletor >= 1489 && seletor <= 1499) {
+
+                    dica = "É uma musica do Cryptic Writings";
+
+                } else if (seletor >= 1500 && seletor <= 1509) {
+
+                    dica = "É uma musica do Dystopia";
+
+                } else if (seletor >= 1510 && seletor <= 1519) {
+
+                    dica = "É uma musica do United Abominations";
+
+                } else if (seletor >= 1520 && seletor <= 1526) {
+
+                    dica = "É uma musica do Killing Is My Business... And Business Is Good!";
+
+                } else if (seletor >= 1527 && seletor <= 1533) {
+
+                    dica = "É uma musica do So Far... So Good... So What!";
+
+                } else if (seletor >= 1534 && seletor <= 1538) {
+
+                    dica = "É uma musca do Hidden Treasures";
+
+                } else if (seletor >= 1539 && seletor <= 1550) {
+
+                    dica = "É uma musica do Risk";
+
+                } else if (seletor >= 1551 && seletor <= 1562) {
+
+                    dica = "É uma musica do The System Has Failed";
+
+                } else if (seletor >= 1563 && seletor <= 1573) {
+
+                    dica = "É uma musica do Endgame";
+
+                } else if (seletor >= 1574 && seletor <= 1586) {
+
+                    dica = "É uma musica do Th1rt3en";
+
+                } else if (seletor >= 1587 && seletor <= 1596) {
+
+                    dica = "É uma musica do Super Collider";
+
+                } else if (seletor >= 1597 && seletor <= 1608) {
+
+                    dica = "É uma musica do The Sick, The Dying... And The Dead!";
+
+                } else if (seletor == 1609) {
+
+                    dica = "É uma musica do Countdown To Extiction (Extended Edition)";
+
+                } else if (seletor == 1610) {
+
+                    dica = "É uma musica do Capitol Punishment: The Megadeth Years";
+
+                } else if (seletor == 1611) {
+
+                    dica = "É uma musica do The World Needs a Hero (Japan Edition)";
+
+                } else if (seletor == 1612) {
+
+                    dica = "É uma musica do Rust In Peace (Extended Edition)";
+
+                }
+            } else if (seletor >= 1613 && seletor <= 1736) {
+
+                tema = "Musicas do Metallica";
+
+                if (seletor >= 1613 && seletor <= 1619) {
+
+                    dica = "É uma musica do Kill 'Em All";
+
+                } else if (seletor >= 1620 && seletor <= 1627) {
+
+                    dica = "É uma musica do Ride The Lightning";
+
+                } else if (seletor >= 1628 && seletor <= 1635) {
+
+                    dica = "É uma musica do Master Of Puppets";
+
+                } else if (seletor >= 1636 && seletor <= 1644) {
+
+                    dica = "É uma musica do ...And Justice For All";
+
+                } else if (seletor >= 1645 && seletor <= 1656) {
+
+                    dica = "É uma musica do Black Album";
+
+                } else if (seletor >= 1657 && seletor <= 1670) {
+
+                    dica = "É uma musica do Load";
+
+                } else if (seletor >= 1671 && seletor <= 1683) {
+
+                    dica = "É uma musica do Reload";
+
+                } else if (seletor >= 1684 && seletor <= 1695) {
+
+                    dica = "É uma musica do St. Anger";
+
+                } else if (seletor >= 1696 && seletor <= 1705) {
+
+                    dica = "É uma musica do Death Magnetic";
+
+                } else if (seletor >= 1706 && seletor <= 1717) {
+
+                    dica = "É uma musica do Hardwired... To Self-Destruct";
+
+                } else if (seletor >= 1718 && seletor <= 1719) {
+
+                    dica = "É uma musca do S & M";
+
+                } else if (seletor >= 1720 && seletor <= 1730) {
+
+                    dica = "É uma musica do Lulu (ft. Lou Reed)";
+
+                } else if (seletor >= 1731 && seletor <= 1734) {
+
+                    dica = "É uma musica do Beyond Magnetic";
+
+                } else if (seletor == 1735) {
+
+                    dica = "É uma musica do single I Disappear";
+
+                } else if (seletor == 1736) {
+
+                    dica = "É uma musica do Hardwired... To Self-Destruct (Deluxe)";
+
+                }
+            } else if (seletor >= 1737 && seletor <= 1809) {
+
+                tema = "Musicas do System Of A Down";
+
+                if (seletor >= 1737 && seletor <= 1749) {
+
+                    dica = "É uma musica do System Of A Down (album)";
+
+                } else if (seletor >= 1750 && seletor <= 1764) {
+
+                    dica = "É uma musica do Toxicity";
+
+                } else if (seletor >= 1765 && seletor <= 1780) {
+
+                    dica = "É uma musica do Steal This Album!";
+
+                } else if (seletor >= 1781 && seletor <= 1791) {
+
+                    dica = "É uma musica do Mezmerize";
+
+                } else if (seletor >= 1792 && seletor <= 1803) {
+
+                    dica = "É uma musica do Hypnotize";
+
+                } else if (seletor >= 1804 && seletor <= 1805) {
+
+                    dica = "É uma musica do single Protect The Land/Genocidal Humanoidz";
+
+                } else if (seletor == 1806) {
+
+                    dica = "É uma musica do single Vicinity Of Obscenity/Lonely Day";
+
+                } else if (seletor == 1807) {
+
+                    dica = "É uma musica do single Chop Suey!";
+
+                } else if (seletor >= 1808 && seletor <= 1809) {
+
+                    dica = "É uma musica do single Toxicity";
+
+                }
+            } else if (seletor >= 1810 && seletor <= 1908) {
+
+                tema = "Musicas do Rammstein";
+
+                if (seletor >= 1810 && seletor <= 1820) {
+
+                    dica = "É uma musica do Herzeleid";
+
+                } else if (seletor >= 1821 && seletor <= 1831) {
+
+                    dica = "É uma musica do Sehnsucht";
+
+                } else if (seletor >= 1832 && seletor <= 1842) {
+
+                    dica = "É uma musica do Mutter";
+
+                } else if (seletor >= 1843 && seletor <= 1853) {
+
+                    dica = "É uma musica do Reise, Reise";
+
+                } else if (seletor >= 1854 && seletor <= 1864) {
+
+                    dica = "É uma musica do Rosenrot";
+
+                } else if (seletor >= 1865 && seletor <= 1875) {
+
+                    dica = "É uma musica do Liebe Ist Für Alle Da";
+
+                } else if (seletor >= 1876 && seletor <= 1886) {
+
+                    dica = "É uma musica do                (album sem nome)";
+
+                } else if (seletor >= 1887 && seletor <= 1897) {
+
+                    dica = "É uma musica do Zeit";
+
+                } else if (seletor == 1898) {
+
+                    dica = "É uma musica do Made In Germany 1995 - 2011";
+
+                } else if (seletor >= 1899 && seletor <= 1904) {
+
+                    dica = "É uma musica do Raritäten (1994 - 2012)";
+
+                } else if (seletor >= 1905 && seletor <= 1908) {
+
+                    dica = "É uma musica do Liebe Ist Für Alle Da (Special Edition)";
+
+                }
             }
 
             // criacao da "palavra" que é mostrada
@@ -1854,7 +3928,7 @@ public class JogoDaForca {
 
                 qntTotalChute = 0;
 
-                letraSimples = false;
+                letraSimples = 0;
 
                 chuteInteiro = false;
 
@@ -1867,10 +3941,10 @@ public class JogoDaForca {
 
                 if (tent > 3) {
 
-                    display = "Tema: " + tema + "\n" + buneco[tent] + "\n" + mensagem + "\nLetras Usadas:" + "\n" + usadas + "\n\n Digite uma letra\nSe quiser chutar a palavra, digite  ela inteira, caso esteja incorreta, você perdera a partida\n Aviso: não é necessário o uso de maiusculas e assentos, incluindo “ç“";
+                    display = "Tema: " + tema + "\n" + buneco[tent] + "\n" + mensagem + "\nLetras Usadas:" + "\n" + usadas + "\n\n Digite apenas uma letra simples (sem maiusculas ou acentos) ou um numero, a não ser que queira chutar a palavra\nSe quiser chutar a palavra, digite  ela inteira, caso esteja incorreta, você perdera a partida\n Aviso: não é necessário o uso de maiusculas e assentos, incluindo “ç“";
                 } else {
 
-                    display = "Tema: " + tema + "\n" + "\nDica: " + dica + "\n" + buneco[tent] + "\n" + mensagem + "\nLetras Usadas:" + "\n" + usadas + "\n\n Digite uma letra\nSe quiser chutar a palavra, digite  ela inteira, caso esteja incorreta, você perdera a partida\n Aviso: não é necessário o uso de maiusculas e assentos, incluindo “ç“";
+                    display = "Tema: " + tema + "\n" + "\nDica: " + dica + "\n" + buneco[tent] + "\n" + mensagem + "\nLetras Usadas:" + "\n" + usadas + "\n\n Digite uma letra simples (sem maiusculas ou acentos) ou um numero, a não ser que queira chutar a palavra\nSe quiser chutar a palavra, digite  ela inteira, caso esteja incorreta, você perdera a partida\n Aviso: não é necessário o uso de maiusculas e assentos, incluindo “ç“";
                 }
 
                 do {
@@ -1881,17 +3955,40 @@ public class JogoDaForca {
 
                         JOptionPane.showMessageDialog(null, "Nenhuma letra foi digitada, tente novamente");
 
+                        fzrComp = false;
+
+                    } else {
+
+                        if (chute.length() >= 2) {
+
+                            confirmInteiro = JOptionPane.showConfirmDialog(null, "Você quer chutar a palavra?");
+
+                            if (confirmInteiro == JOptionPane.YES_OPTION) {
+
+                                chuteInteiro = true;
+
+                                fzrComp = true;
+
+                            } else {
+
+                                JOptionPane.showMessageDialog(null, "Tente novamente");
+
+                                chuteInteiro = false;
+
+                                fzrComp = false;
+
+                            }
+
+                        } else {
+
+                            fzrComp = true;
+
+                        }
                     }
 
-                } while (chute.isEmpty());
+                } while (!fzrComp);
 
                 acertou = false;
-
-                if (chute.length() == resposta.length) {
-
-                    chuteInteiro = true;
-
-                }
 
                 for (int tp = 0; tp < word[seletor].length(); tp++) {
 
@@ -1917,7 +4014,7 @@ public class JogoDaForca {
                         //a
                     } else if (chute.charAt(jk) == 'a') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'a') {
 
@@ -1971,7 +4068,7 @@ public class JogoDaForca {
                     } // b
                     else if (chute.charAt(jk) == 'b') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'b') {
 
@@ -1989,7 +4086,7 @@ public class JogoDaForca {
                     } // c
                     else if (chute.charAt(jk) == 'c') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'c') {
 
@@ -2019,7 +4116,7 @@ public class JogoDaForca {
                     } // d
                     else if (chute.charAt(jk) == 'd') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'd') {
 
@@ -2037,7 +4134,7 @@ public class JogoDaForca {
                     } // e
                     else if (chute.charAt(jk) == 'e') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'e') {
 
@@ -2078,7 +4175,7 @@ public class JogoDaForca {
                         }
                     } else if (chute.charAt(jk) == 'f') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'f') {
 
@@ -2096,7 +4193,7 @@ public class JogoDaForca {
                     } // g
                     else if (chute.charAt(jk) == 'g') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'g') {
 
@@ -2114,7 +4211,7 @@ public class JogoDaForca {
                     } // h
                     else if (chute.charAt(jk) == 'h') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'h') {
 
@@ -2132,7 +4229,7 @@ public class JogoDaForca {
                     } // i
                     else if (chute.charAt(jk) == 'i') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'i') {
 
@@ -2174,7 +4271,7 @@ public class JogoDaForca {
                     } // j
                     else if (chute.charAt(jk) == 'j') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'j') {
 
@@ -2192,7 +4289,7 @@ public class JogoDaForca {
                     } // k
                     else if (chute.charAt(jk) == 'k') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'k') {
 
@@ -2210,7 +4307,7 @@ public class JogoDaForca {
                     } // l
                     else if (chute.charAt(jk) == 'l') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'l') {
 
@@ -2228,7 +4325,7 @@ public class JogoDaForca {
                     } // m
                     else if (chute.charAt(jk) == 'm') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'm') {
 
@@ -2246,7 +4343,7 @@ public class JogoDaForca {
                     } // n
                     else if (chute.charAt(jk) == 'n') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'n') {
 
@@ -2264,7 +4361,7 @@ public class JogoDaForca {
                     } // o
                     else if (chute.charAt(jk) == 'o') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'o') {
 
@@ -2329,7 +4426,7 @@ public class JogoDaForca {
                     } // p
                     else if (chute.charAt(jk) == 'p') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'p') {
 
@@ -2346,7 +4443,7 @@ public class JogoDaForca {
                     } // q
                     else if (chute.charAt(jk) == 'q') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'q') {
 
@@ -2364,7 +4461,7 @@ public class JogoDaForca {
                     } // r
                     else if (chute.charAt(jk) == 'r') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'r') {
 
@@ -2382,7 +4479,7 @@ public class JogoDaForca {
                     } // s
                     else if (chute.charAt(jk) == 's') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 's') {
 
@@ -2400,7 +4497,7 @@ public class JogoDaForca {
                     } // t
                     else if (chute.charAt(jk) == 't') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 't') {
 
@@ -2418,7 +4515,7 @@ public class JogoDaForca {
                     } // u
                     else if (chute.charAt(jk) == 'u') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'u') {
 
@@ -2472,7 +4569,7 @@ public class JogoDaForca {
                     } // v
                     else if (chute.charAt(jk) == 'v') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'v') {
 
@@ -2490,7 +4587,7 @@ public class JogoDaForca {
                     } // w
                     else if (chute.charAt(jk) == 'w') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'w') {
 
@@ -2508,7 +4605,7 @@ public class JogoDaForca {
                     } // x
                     else if (chute.charAt(jk) == 'x') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'x') {
 
@@ -2526,7 +4623,7 @@ public class JogoDaForca {
                     } // y
                     else if (chute.charAt(jk) == 'y') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'y') {
 
@@ -2550,7 +4647,7 @@ public class JogoDaForca {
                     } // z
                     else if (chute.charAt(jk) == 'z') {
 
-                        letraSimples = true;
+                        letraSimples++;
 
                         if (word[seletor].charAt(tp) == 'z') {
 
@@ -2565,6 +4662,126 @@ public class JogoDaForca {
                             acertou = true;
 
                         }
+                    } else if (chute.charAt(jk) == '0') {
+
+                        letraSimples++;
+
+                        if (word[seletor].charAt(tp) == '0') {
+
+                            resposta[tp] = "0 ";
+
+                            acertou = true;
+
+                        }
+
+                    } else if (chute.charAt(jk) == '1') {
+
+                        letraSimples++;
+
+                        if (word[seletor].charAt(tp) == '1') {
+
+                            resposta[tp] = "1 ";
+
+                            acertou = true;
+
+                        }
+
+                    } else if (chute.charAt(jk) == '2') {
+
+                        letraSimples++;
+
+                        if (word[seletor].charAt(tp) == '2') {
+
+                            resposta[tp] = "2 ";
+
+                            acertou = true;
+
+                        }
+
+                    } else if (chute.charAt(jk) == '3') {
+
+                        letraSimples++;
+
+                        if (word[seletor].charAt(tp) == '3') {
+
+                            resposta[tp] = "3 ";
+
+                            acertou = true;
+
+                        }
+
+                    } else if (chute.charAt(jk) == '4') {
+
+                        letraSimples++;
+
+                        if (word[seletor].charAt(tp) == '4') {
+
+                            resposta[tp] = "4 ";
+
+                            acertou = true;
+
+                        }
+
+                    } else if (chute.charAt(jk) == '5') {
+
+                        letraSimples++;
+
+                        if (word[seletor].charAt(tp) == '5') {
+
+                            resposta[tp] = "5 ";
+
+                            acertou = true;
+
+                        }
+
+                    } else if (chute.charAt(jk) == '6') {
+
+                        letraSimples++;
+
+                        if (word[seletor].charAt(tp) == '6') {
+
+                            resposta[tp] = "6 ";
+
+                            acertou = true;
+
+                        }
+
+                    } else if (chute.charAt(jk) == '7') {
+
+                        letraSimples++;
+
+                        if (word[seletor].charAt(tp) == '7') {
+
+                            resposta[tp] = "7 ";
+
+                            acertou = true;
+
+                        }
+
+                    } else if (chute.charAt(jk) == '8') {
+
+                        letraSimples++;
+
+                        if (word[seletor].charAt(tp) == '8') {
+
+                            resposta[tp] = "8 ";
+
+                            acertou = true;
+
+                        }
+
+                    } else if (chute.charAt(jk) == '9') {
+
+                        letraSimples++;
+
+                        if (word[seletor].charAt(tp) == '9') {
+
+                            resposta[tp] = "9 ";
+
+                            acertou = true;
+
+                        }
+
                     } else if (chuteInteiro) {
 
                         if (chute.charAt(jk) == '.' && word[seletor].charAt(tp) == '.') {
@@ -2613,6 +4830,11 @@ public class JogoDaForca {
 
                         }
 
+                    } else {
+
+                        JOptionPane.showMessageDialog(null, "Utilize apenas letras simples ou numeros, letras em maiusculas ou com acentos não são validas, incluindo 'ç'\nTente Novamente");
+
+                        break;
                     }
 
                     if (chuteInteiro && acertou) {
@@ -2631,13 +4853,6 @@ public class JogoDaForca {
 
                     acertou = false;
                 }
-                if (!letraSimples) {
-
-                    JOptionPane.showMessageDialog(null, "Utilize apenas letras simples, sem acentos ou maiusculas, incluindo 'ç'.\nTente novamente");
-
-                    acertou = true;
-
-                }
                 for (int du = 0; du < usadas.length(); du++) {
                     if (chute.charAt(0) == usadas.charAt(du)) {
 
@@ -2653,7 +4868,7 @@ public class JogoDaForca {
 
                     tent = 0;
 
-                } else if (!acertou && letraSimples) {
+                } else if (!acertou && letraSimples == resposta.length) {
 
                     tent--;
 
@@ -2695,7 +4910,7 @@ public class JogoDaForca {
 
             } else if (reiniciar == JOptionPane.NO_OPTION) {
 
-                JOptionPane.showMessageDialog(null, "Obrigado por jogar!\n\nFeito por Kauã C. Seabra\n11/04/2023 - 13/04/2023\nUltima atualização: 18/05/2023");
+                JOptionPane.showMessageDialog(null, "Obrigado por jogar!\n\nFeito por Kauã C. Seabra\n11/04/2023 - 13/04/2023\nUltima atualização: 06/06/2023");
 
                 denovo = false;
 
@@ -2706,6 +4921,6 @@ public class JogoDaForca {
             }
 
         }
-        System.out.println("\nFeito por Kauã C. Seabra\n11/04/2023 - 13/04/2023\nUltima atualização: 18/05/2023");
+        System.out.println("\nFeito por Kauã C. Seabra\n11/04/2023 - 13/04/2023\nUltima atualização: 06/06/2023");
     }
 }
