@@ -1,7 +1,7 @@
 package jogodaforca;
 //Feito por: Kauã C. Seabra
 //11/04/2023 - 13/04/2023
-//Ultima atualização: 06/06/2023
+//Ultima atualização: 09/06/2023
 
 import java.util.Random;
 
@@ -11,7 +11,7 @@ public class JogoDaForca {
 
     public static void main(String[] args) {
         // mensagem inicial
-        JOptionPane.showMessageDialog(null, "Bem vindo ao Jogo da Forca!\n_______\n|             |\n|            O\n|            /|\\\n|            / \\\n|\nAlguns dias de trabalho, mais de 4900 linhas de codigo e 1909 palavras!");
+        JOptionPane.showMessageDialog(null, "Bem vindo ao Jogo da Forca!\n_______\n|             |\n|            O\n|            /|\\\n|            / \\\n|\nAlguns dias de trabalho, mais de 5000 linhas de codigo e 1909 palavras!");
 
         boolean denovo = true;
 
@@ -20,7 +20,7 @@ public class JogoDaForca {
             int min = 0;
             int max = 0;
             int selecTema;
-            int seletor;
+            int seletor = 0;
             int tent = 6;
             int jk;
             int qntTotalChute;
@@ -29,11 +29,16 @@ public class JogoDaForca {
             int confirmInteiro;
 
             boolean modoOk = true;
+            boolean temaOk = true;
             boolean venceu = false;
             boolean chuteInteiro;
             boolean acertou;
             boolean fzrComp;
+            boolean plvPers = true;
+            boolean temaPers = true;
+            boolean dicaPers = true;
 
+            String escModo = " ";
             String escolha = " ";
             String word[];
             String tema = null;
@@ -44,176 +49,207 @@ public class JogoDaForca {
             String usadas = " ";
             String mensagem;
             String display;
+            String wordPersonalizada = " ";
+            String temaPersonalizado = " ";
+            String dicaPersonalizada = " ";
 
-            // selecão de tema
+            Random ran = new Random();
+
+            //seleção do modo
             while (modoOk) {
 
-                escolha = JOptionPane.showInputDialog("Escolha um tema:\n0 - Aleatorio\n1 - Frutas, vegetais, grãos, ervas, etc.\n2 - Animais\n3 - Profissões\n4 - Filmes\n5 - Filmes animados\n6 - Series animadas\n7 - Series\n8 - Paises\n9 - Capitais dos paises\n10 - Estados do Brasil\n11 - Capitais dos estados do Brasil\n12 - Planetas do Sistema Solar\n13 - Elementos da Tabela Periódica\n14 - Games\n15 - Bandas e artistas de Rock\n16 - Bandas de Heavy Metal\n17 - Albuns de Heavy Metal\n18 - Musicas do Megadeth\n19 - Musicas do Metallica\n20 - Musicas do System Of A Down\n21 - Musicas do Rammstein\n\n1909 palavras possiveis");
+                escModo = JOptionPane.showInputDialog("Escolha o modo de jogo:\n\n1 - Menu de temas\n(21 temas, 1909 palavras)\n\n 2 - Palavra personalizada\n(ideal para jogar com amigos)");
 
-                if (escolha.equals("0") || escolha.equals("1") || escolha.equals("2") || escolha.equals("3") || escolha.equals("4") || escolha.equals("5") || escolha.equals("6") || escolha.equals("7") || escolha.equals("8") || escolha.equals("9") || escolha.equals("10") || escolha.equals("11") || escolha.equals("12") || escolha.equals("13") || escolha.equals("14") || escolha.equals("15") || escolha.equals("16") || escolha.equals("17") || escolha.equals("18") || escolha.equals("19") || escolha.equals("20") || escolha.equals("21") || escolha.equals("22")) {
+                if (escModo.equals("1") || escModo.equals("2")) {
 
                     modoOk = false;
 
-                } else if (escolha.isEmpty()) {
+                } else if (escModo.isEmpty()) {
+
+                    modoOk = true;
 
                     JOptionPane.showMessageDialog(null, "Nenhuma modo foi escolhido, tente novamente");
 
-                    modoOk = true;
-
                 } else {
 
-                    JOptionPane.showMessageDialog(null, "Erro!\nDigite um modo valido!");
-
                     modoOk = true;
+
+                    JOptionPane.showMessageDialog(null, "Erro!\nDigite um modo valido!");
                 }
             }
 
-            selecTema = Integer.parseInt(escolha);
+            if (escModo.equals("1")) {
+// selecão de tema
+                while (temaOk) {
 
-            // aleatorio
-            switch (selecTema) {
-                case 0:
-                    min = 0;
-                    max = 1908;
+                    escolha = JOptionPane.showInputDialog("Escolha um tema:\n0 - Aleatorio\n1 - Frutas, vegetais, grãos, ervas, etc.\n2 - Animais\n3 - Profissões\n4 - Filmes\n5 - Filmes animados\n6 - Series animadas\n7 - Series\n8 - Paises\n9 - Capitais dos paises\n10 - Estados do Brasil\n11 - Capitais dos estados do Brasil\n12 - Planetas do Sistema Solar\n13 - Elementos da Tabela Periódica\n14 - Games\n15 - Bandas e artistas de Rock\n16 - Bandas de Heavy Metal\n17 - Albuns de Heavy Metal\n18 - Musicas do Megadeth\n19 - Musicas do Metallica\n20 - Musicas do System Of A Down\n21 - Musicas do Rammstein\n\n1909 palavras possiveis");
 
-                    // frutas vegetais etc
-                    break;
-                case 1:
-                    min = 0;
-                    max = 99;
+                    if (escolha.equals("0") || escolha.equals("1") || escolha.equals("2") || escolha.equals("3") || escolha.equals("4") || escolha.equals("5") || escolha.equals("6") || escolha.equals("7") || escolha.equals("8") || escolha.equals("9") || escolha.equals("10") || escolha.equals("11") || escolha.equals("12") || escolha.equals("13") || escolha.equals("14") || escolha.equals("15") || escolha.equals("16") || escolha.equals("17") || escolha.equals("18") || escolha.equals("19") || escolha.equals("20") || escolha.equals("21") || escolha.equals("22")) {
 
-                    // animais
-                    break;
-                case 2:
-                    min = 100;
-                    max = 199;
+                        temaOk = false;
 
-                    //profissoes
-                    break;
-                case 3:
-                    min = 1264;
-                    max = 1363;
+                    } else if (escolha.isEmpty()) {
 
-                    // filmes
-                    break;
-                case 4:
-                    min = 200;
-                    max = 299;
+                        JOptionPane.showMessageDialog(null, "Nenhuma tema foi escolhido, tente novamente");
 
-                    // filmes animados
-                    break;
-                case 5:
-                    min = 300;
-                    max = 399;
+                        temaOk = true;
 
-                    // series animadas
-                    break;
-                case 6:
-                    min = 640;
-                    max = 739;
+                    } else {
 
-                    //series
-                    break;
-                case 7:
-                    min = 1064;
-                    max = 1163;
+                        JOptionPane.showMessageDialog(null, "Erro!\nDigite um tema valido!");
 
-                    // paises
-                    break;
-                case 8:
-                    min = 400;
-                    max = 499;
+                        temaOk = true;
+                    }
+                }
 
-                    //capitais dos paises
-                    break;
-                case 9:
-                    min = 865;
-                    max = 963;
+                selecTema = Integer.parseInt(escolha);
 
-                    // estados do brasil
-                    break;
-                case 10:
-                    min = 600;
-                    max = 626;
+                // aleatorio
+                switch (selecTema) {
+                    case 0:
+                        min = 0;
+                        max = 1908;
 
-                    //capitais dos estados
-                    break;
-                case 11:
-                    min = 838;
-                    max = 864;
+                        // frutas vegetais etc
+                        break;
+                    case 1:
+                        min = 0;
+                        max = 99;
 
-                    // planetas
-                    break;
-                case 12:
-                    min = 627;
-                    max = 634;
+                        // animais
+                        break;
+                    case 2:
+                        min = 100;
+                        max = 199;
 
-                    //elementos da tabela periodica
-                    break;
-                case 13:
-                    min = 1364;
-                    max = 1439;
+                        //profissoes
+                        break;
+                    case 3:
+                        min = 1264;
+                        max = 1363;
 
-                    //games
-                    break;
-                case 14:
-                    min = 740;
-                    max = 837;
-                    //bandas de rock
-                    break;
-                case 15:
-                    min = 1164;
-                    max = 1263;
+                        // filmes
+                        break;
+                    case 4:
+                        min = 200;
+                        max = 299;
 
-                    // bandas de metal
-                    break;
-                case 16:
-                    min = 500;
-                    max = 599;
+                        // filmes animados
+                        break;
+                    case 5:
+                        min = 300;
+                        max = 399;
 
-                    //albuns de metal
-                    break;
-                case 17:
-                    min = 964;
-                    max = 1063;
+                        // series animadas
+                        break;
+                    case 6:
+                        min = 640;
+                        max = 739;
 
-                    //musicas megadeth
-                    break;
-                case 18:
-                    min = 1440;
-                    max = 1612;
+                        //series
+                        break;
+                    case 7:
+                        min = 1064;
+                        max = 1163;
 
-                    //musicas metallica
-                    break;
-                case 19:
-                    min = 1613;
-                    max = 1736;
+                        // paises
+                        break;
+                    case 8:
+                        min = 400;
+                        max = 499;
 
-                    //musicas do soad
-                    break;
-                case 20:
-                    min = 1737;
-                    max = 1809;
+                        //capitais dos paises
+                        break;
+                    case 9:
+                        min = 865;
+                        max = 963;
 
-                    //musicasd do rammstein
-                    break;
-                case 21:
-                    min = 1810;
-                    max = 1908;
+                        // estados do brasil
+                        break;
+                    case 10:
+                        min = 600;
+                        max = 626;
 
-                    //extras
-                    break;
-                case 22:
-                    min = 635;
-                    max = 639;
+                        //capitais dos estados
+                        break;
+                    case 11:
+                        min = 838;
+                        max = 864;
 
-                    break;
-                default:
-                    break;
+                        // planetas
+                        break;
+                    case 12:
+                        min = 627;
+                        max = 634;
+
+                        //elementos da tabela periodica
+                        break;
+                    case 13:
+                        min = 1364;
+                        max = 1439;
+
+                        //games
+                        break;
+                    case 14:
+                        min = 740;
+                        max = 837;
+                        //bandas de rock
+                        break;
+                    case 15:
+                        min = 1164;
+                        max = 1263;
+
+                        // bandas de metal
+                        break;
+                    case 16:
+                        min = 500;
+                        max = 599;
+
+                        //albuns de metal
+                        break;
+                    case 17:
+                        min = 964;
+                        max = 1063;
+
+                        //musicas megadeth
+                        break;
+                    case 18:
+                        min = 1440;
+                        max = 1612;
+
+                        //musicas metallica
+                        break;
+                    case 19:
+                        min = 1613;
+                        max = 1736;
+
+                        //musicas do soad
+                        break;
+                    case 20:
+                        min = 1737;
+                        max = 1809;
+
+                        //musicasd do rammstein
+                        break;
+                    case 21:
+                        min = 1810;
+                        max = 1908;
+
+                        //extras
+                        break;
+                    case 22:
+                        min = 635;
+                        max = 639;
+
+                        break;
+                    default:
+                        break;
+                }
+
             }
 
             // palavras
-            word = new String[1909];
+            word = new String[1910];
             // frutas, vegetais, graos, ervas, etc
             //sub-frutas
             word[0] = "morango";
@@ -2676,10 +2712,75 @@ public class JogoDaForca {
             word[1907] = "Halt";
             word[1908] = "Liese";
 
-            // sorteio da palavra
-            Random ran = new Random();
+            //palavra personalizada
+            word[1909] = " ";
 
-            seletor = ran.nextInt((max - min) + 1) + min;
+            //menu de palavra selecionada
+            if (escModo.equals("2")) {
+
+                while (plvPers) {
+
+                    wordPersonalizada = JOptionPane.showInputDialog("Digite sua palavra personalizada");
+
+                    if (wordPersonalizada.isEmpty()) {
+
+                        JOptionPane.showMessageDialog(null, "Nenhuma palavra foi digitada, tente novamente");
+
+                        plvPers = true;
+
+                    } else {
+
+                        plvPers = false;
+
+                        word[1909] = wordPersonalizada;
+
+                    }
+                }
+
+                while (temaPers) {
+
+                    temaPersonalizado = JOptionPane.showInputDialog("Digite o tema da sua palavra");
+
+                    if (temaPersonalizado.isEmpty()) {
+
+                        JOptionPane.showMessageDialog(null, "Nenhuma tema foi digitada, tente novamente");
+
+                        temaPers = true;
+
+                    } else {
+
+                        tema = temaPersonalizado;
+
+                        temaPers = false;
+                    }
+                }
+
+                while (dicaPers) {
+
+                    dicaPersonalizada = JOptionPane.showInputDialog("Digite uma dica para sua palavra\n(sera mostrada apos o jogador errar 3 vezes)");
+
+                    if (dicaPersonalizada.isEmpty()) {
+
+                        JOptionPane.showMessageDialog(null, "Nenhuma dica foi digitada, tente novamente");
+
+                        dicaPers = true;
+
+                    } else {
+
+                        dica = dicaPersonalizada;
+
+                        dicaPers = false;
+                    }
+                }
+
+                seletor = 1909;
+
+            } else if (escModo.equals("1")) {
+
+                // sorteio da palavra
+                seletor = ran.nextInt((max - min) + 1) + min;
+
+            }
 
             // definicao da mensagem de tema
             if (seletor >= 0 && seletor <= 99) {
@@ -4910,7 +5011,7 @@ public class JogoDaForca {
 
             } else if (reiniciar == JOptionPane.NO_OPTION) {
 
-                JOptionPane.showMessageDialog(null, "Obrigado por jogar!\n\nFeito por Kauã C. Seabra\n11/04/2023 - 13/04/2023\nUltima atualização: 06/06/2023");
+                JOptionPane.showMessageDialog(null, "Obrigado por jogar!\n\nFeito por Kauã C. Seabra\n11/04/2023 - 13/04/2023\nUltima atualização: 09/06/2023");
 
                 denovo = false;
 
@@ -4921,6 +5022,6 @@ public class JogoDaForca {
             }
 
         }
-        System.out.println("\nFeito por Kauã C. Seabra\n11/04/2023 - 13/04/2023\nUltima atualização: 06/06/2023");
+        System.out.println("\nFeito por Kauã C. Seabra\n11/04/2023 - 13/04/2023\nUltima atualização: 09/06/2023");
     }
 }
